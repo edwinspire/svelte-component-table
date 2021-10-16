@@ -2,9 +2,18 @@
   "name": "@edwinspire/svelte-component-table",
   "version": "1.0.0",
   "description": "Tabla para Svelte con funciones interesantes",
-  "main": "src/index.js",
+  "svelte": "src/index.js",
+  "module": "dist/index.mjs",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "rollup": "^2.0.0",
+    "rollup-plugin-svelte": "^6.0.0",
+    "svelte": "^3.0.0"
   },
   "repository": {
     "type": "git",
@@ -24,5 +33,9 @@
   "homepage": "https://github.com/edwinspire/svelte-component-table.git#readme",
   "dependencies": {
     "@edwinspire/universal-fetch": "git+https://github.com/edwinspire/universal-fetch.git"
-  }
+  },
+  "files": [
+    "src",
+    "dist"
+  ]
 }

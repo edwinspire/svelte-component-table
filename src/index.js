@@ -1,3 +1,1 @@
-"use strict";
-module.exports  = require("./Table/Table.svelte");
-
+export { default as default } from './Table/Table.svelte';

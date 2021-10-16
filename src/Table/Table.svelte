@@ -4,9 +4,8 @@
   import { createEventDispatcher } from "svelte";
   import { onDestroy, onMount } from "svelte";
   import uFetch from "@edwinspire/universal-fetch";
-//  import { GetData } from "./GetData";
   import CellTypes from "./Cell/TableCell.js";
-  //import { ArrayChunk } from "@edwinspire/utils/_ArrayChunk";
+
   //-      -//
   //TODO Habilitar mostrar u ocultar columnas
   //TODO Mostrar icono en columna que está siendo ordenada

@@ -1,1 +1,3 @@
-export { default as default } from './Table/Table.svelte';
+import Table from './Table/Table.svelte';
+module.exports = Table;
+

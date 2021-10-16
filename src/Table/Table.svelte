@@ -3,7 +3,7 @@
   import XLSX from "xlsx";
   import { createEventDispatcher } from "svelte";
   import { onDestroy, onMount } from "svelte";
-  import uFetch from "@edwinspire/universal-fetch";
+  const uFetch = require( "@edwinspire/universal-fetch");
   import CellTypes from "./Cell/TableCell.js";
 
   //-      -//

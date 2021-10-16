@@ -1,9 +1,9 @@
 <script>
   const crypto = require("crypto");
-  import XLSX from "xlsx";
+  const XLSX = require("xlsx");
   import { createEventDispatcher } from "svelte";
   import { onDestroy, onMount } from "svelte";
-  const uFetch = require( "@edwinspire/universal-fetch");
+  const uFetch = require("@edwinspire/universal-fetch");
   import CellTypes from "./Cell/TableCell.js";
 
   //-      -//

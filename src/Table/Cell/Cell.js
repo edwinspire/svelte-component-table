@@ -7,7 +7,7 @@ export default class CellBuild {
   }
 
   add(svelte_component, name_cell, table_name, namespace) {
-    this.cells = { ...this.cells, ...Cell.set(name_cell, table_name, namespace, svelte_component) }
+    this.cells = { ...this.cells, ...CellBuild.set(name_cell, table_name, namespace, svelte_component) }
   }
   types() {
     return this.cells;
@@ -18,7 +18,7 @@ export default class CellBuild {
   }
 
   static set(name_cell, table_name, namespace, svelte_component) {
-    let n = Cell.name(name_cell, table_name, namespace, svelte_component);
+    let n = CellBuild.name(name_cell, table_name, namespace, svelte_component);
     let cell = new Object();
     cell[n] = svelte_component;
     return cell;

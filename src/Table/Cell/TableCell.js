@@ -1,4 +1,4 @@
-  import CellTypes from "@edwinspire/utils/TableSvelte/Cell.js";
+  import CellTypes from "./Cell.js";
   import TableCellBoolean01 from "./TableCellBoolean01.svelte";
   import TableCellBoolean02 from "./TableCellBoolean02.svelte";
   import TableCellTextLimit from "./TableCellTextLimit.svelte";

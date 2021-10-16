@@ -1,6 +1,6 @@
 //import { ArrayChunk } from "@edwinspire/utils/ArrayChunk";
 //sequential execution of promises in parallel blocks
-export default class Cell {
+export default class CellBuild {
 
   constructor(CellTypes) {
     this.cells = CellTypes || new Object();

@@ -17,7 +17,4 @@
   CT.add(TableCellJSON, 'Json');
 
   const CellTypesComponents = CT.types();
-
-  //console.log('Table > Cells Types', CellTypesComponents);
-
 export default CellTypesComponents;

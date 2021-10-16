@@ -4,7 +4,8 @@
   import { createEventDispatcher } from "svelte";
   import { onDestroy, onMount } from "svelte";
   const uFetch = require("@edwinspire/universal-fetch");
-  import CellTypes from "./Cell/TableCell.js";
+  import BaseCellTypes from "./Cell/TableCell.js";
+  import BuildCellTypes from "./Cell/Cell.js";
 
   //-      -//
   //TODO Habilitar mostrar u ocultar columnas
@@ -12,6 +13,7 @@
   //TODO Fijar encabezado
   //TODO Hacer celdas editables
   //TODO Hacer columnas con ancho ajustable
+  export const CellTypes = {};
   export let RawDataTable = [];
   export let SelectionType = 0;
   export let columns = {};
@@ -44,6 +46,11 @@
   let SelectAll = false;
   let orderASC = true;
   let internal_columns = {};
+
+  let BuildCelltypes = new BuildCellTypes(BaseCellTypes);
+  BuildCelltypes.join(CellTypes);
+
+  let CustomCellTypes = BuildCelltypes.types();
 
   $: SelectedRows, OnSelection();
 
@@ -629,16 +636,16 @@
               <!-- Muestra las columnas que no se hayan especificado como ocultas -->
               {#if internal_columns[item]}
                 {#if !internal_columns[item].hidden || internal_columns[item].hidden == null}
-                  {#if CellTypes[internal_columns[item].type]}
+                  {#if CustomCellTypes[internal_columns[item].type]}
                     <svelte:component
-                      this={CellTypes[internal_columns[item].type]}
+                      this={CustomCellTypes[internal_columns[item].type]}
                       on:click={HClickCell(item, dataRow)}
                       row={dataRow}
                       value={dataRow[item]}
                     />
                   {:else}
                     <svelte:component
-                      this={CellTypes["/main/table/json"]}
+                      this={CustomCellTypes["/main/table/json"]}
                       on:click={HClickCell(item, dataRow)}
                       row={dataRow}
                       value={dataRow[item]}

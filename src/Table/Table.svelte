@@ -648,6 +648,7 @@
                   {:else}
                     <svelte:component
                       this={Json}
+                      props={false}
                       on:click={HClickCell(item, dataRow)}
                       row={dataRow}
                       value={dataRow[item]}

@@ -950,7 +950,7 @@
     	};
     }
 
-    // (802:0) {:else}
+    // (803:0) {:else}
     function create_else_block_1(ctx) {
     	let div;
 
@@ -1721,6 +1721,7 @@
     	function switch_props(ctx) {
     		return {
     			props: {
+    				props: false,
     				row: /*dataRow*/ ctx[75],
     				value: /*dataRow*/ ctx[75][/*item*/ ctx[78]]
     			}
@@ -2110,7 +2111,7 @@
     	};
     }
 
-    // (669:8) {#if paginatedData && paginatedData.length > 1}
+    // (670:8) {#if paginatedData && paginatedData.length > 1}
     function create_if_block_1(ctx) {
     	let div0;
     	let span0;
@@ -2307,7 +2308,7 @@
     	};
     }
 
-    // (709:14) {#if PageSelected + 1 <= TotalPages}
+    // (710:14) {#if PageSelected + 1 <= TotalPages}
     function create_if_block_5(ctx) {
     	let button;
     	let t_value = /*PageSelected*/ ctx[10] + 1 + "";
@@ -2341,7 +2342,7 @@
     	};
     }
 
-    // (718:14) {#if PageSelected + 2 <= TotalPages}
+    // (719:14) {#if PageSelected + 2 <= TotalPages}
     function create_if_block_4(ctx) {
     	let button;
     	let t_value = /*PageSelected*/ ctx[10] + 2 + "";
@@ -2375,7 +2376,7 @@
     	};
     }
 
-    // (728:14) {#if PageSelected + 3 <= TotalPages}
+    // (729:14) {#if PageSelected + 3 <= TotalPages}
     function create_if_block_3(ctx) {
     	let button;
     	let t_value = /*PageSelected*/ ctx[10] + 3 + "";
@@ -2409,7 +2410,7 @@
     	};
     }
 
-    // (738:14) {#if PageSelected + 4 <= TotalPages}
+    // (739:14) {#if PageSelected + 4 <= TotalPages}
     function create_if_block_2(ctx) {
     	let button;
     	let t_value = /*PageSelected*/ ctx[10] + 4 + "";
@@ -2443,7 +2444,7 @@
     	};
     }
 
-    // (828:8) {#each Object.keys(columns) as col}
+    // (829:8) {#each Object.keys(columns) as col}
     function create_each_block(ctx) {
     	let div;
     	let label;

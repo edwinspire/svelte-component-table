@@ -6,12 +6,12 @@ import DateTime from "./DateTime.svelte";
 import DateCell from "./Date.svelte";
 import Json from "./JSON.svelte";
 
-module.exports = {
-  Boolean01: Boolean01,
-  Boolean02: Boolean02,
-  TextLimit: TextLimit,
-  DateTimeIsNotToday: DateTimeIsNotToday,
-  DateTime: DateTime,
-  Date: DateCell,
-  Json: Json,
+export {
+  Boolean01,
+  Boolean02,
+  TextLimit,
+  DateTimeIsNotToday,
+  DateTime,
+  DateCell as Date,
+  Json
 };

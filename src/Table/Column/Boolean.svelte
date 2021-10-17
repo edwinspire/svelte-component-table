@@ -24,7 +24,7 @@
     </td>
   {:else}
     <td class="has-text-centered" on:click>
-      <input type="checkbox" checked={value} readonly />
+      <input type="checkbox" checked={value} onclick="return false;" />
     </td>
   {/if}
 {:else if option == "icon"}
@@ -41,6 +41,6 @@
   </td>
 {:else}
   <td class="has-text-centered" on:click>
-    <input type="checkbox" checked={value} readonly />
+    <input type="checkbox" checked={value} onclick="return false;" />
   </td>
 {/if}

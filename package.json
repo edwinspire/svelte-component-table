@@ -2,7 +2,7 @@
   "name": "@edwinspire/svelte-component-table",
   "version": "1.0.0",
   "description": "Tabla para Svelte con funciones interesantes",
-  "svelte": "src/index.js",
+  "svelte": "index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "scripts": {

@@ -1,6 +1,6 @@
 <script>
   export let value;
-  //export let row = {};
+  //export let component = {};
 </script>
 
 {#if value}

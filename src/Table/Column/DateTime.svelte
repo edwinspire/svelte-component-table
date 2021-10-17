@@ -1,6 +1,7 @@
 <script>
   export let value;
   export let props;
+  export const row = {};
   let DC001 = false;
   const { DateTime } = require("luxon");
   let format = "yyyy-MM-dd HH:mm:ss";

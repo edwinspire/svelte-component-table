@@ -4,8 +4,9 @@
   import { createEventDispatcher } from "svelte";
   import { onDestroy, onMount } from "svelte";
   const uFetch = require("@edwinspire/universal-fetch");
-  import BaseCellTypes from "./Cell/TableCell.js";
-  import BuildCellTypes from "./Cell/Cell.js";
+  const Json = require("./Column/DefaultTypes.js").Json;
+  //import BaseCellTypes from "./Cell/TableCell.js";
+  //import BuildCellTypes from "./Cell/Cell.js";
 
   //-      -//
   //TODO Habilitar mostrar u ocultar columnas
@@ -13,7 +14,7 @@
   //TODO Fijar encabezado
   //TODO Hacer celdas editables
   //TODO Hacer columnas con ancho ajustable
-  export const CellTypes = {};
+  //export let CellTypes = {};
   export let RawDataTable = [];
   export let SelectionType = 0;
   export let columns = {};
@@ -47,10 +48,10 @@
   let orderASC = true;
   let internal_columns = {};
 
-  let BuildCelltypes = new BuildCellTypes(BaseCellTypes);
-  BuildCelltypes.join(CellTypes);
-
-  let CustomCellTypes = BuildCelltypes.types();
+  //let BuildCelltypes = new BuildCellTypes(BaseCellTypes);
+  //BuildCelltypes.join(CellTypes);
+  //let CustomCellTypes = BuildCelltypes.types();
+  //console.log('CellTypes:', CustomCellTypes);
 
   $: SelectedRows, OnSelection();
 
@@ -636,16 +637,16 @@
               <!-- Muestra las columnas que no se hayan especificado como ocultas -->
               {#if internal_columns[item]}
                 {#if !internal_columns[item].hidden || internal_columns[item].hidden == null}
-                  {#if CustomCellTypes[internal_columns[item].type]}
+                  {#if internal_columns[item].decorator}
                     <svelte:component
-                      this={CustomCellTypes[internal_columns[item].type]}
+                      this={internal_columns[item].decorator}
                       on:click={HClickCell(item, dataRow)}
                       row={dataRow}
                       value={dataRow[item]}
                     />
                   {:else}
                     <svelte:component
-                      this={CustomCellTypes["/main/table/json"]}
+                      this={Json}
                       on:click={HClickCell(item, dataRow)}
                       row={dataRow}
                       value={dataRow[item]}

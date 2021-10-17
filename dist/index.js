@@ -1,7 +1,8 @@
-(function (factory) {
-    typeof define === 'function' && define.amd ? define(factory) :
-    factory();
-})((function () { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ComponentTable = {}));
+})(this, (function (exports) { 'use strict';
 
     function noop() { }
     function assign(tar, src) {
@@ -3739,10 +3740,10 @@
     }
 
     const types = require("./src/Table/Column/DefaultTypes.js");
-    //export { default as default } from "./Table/Table.svelte";
-    module.exports = {
-      Table: Table,
-      ColumnTypes: types,
-    };
+
+    exports.ColumnTypes = types;
+    exports.Table = Table;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
 
 }));

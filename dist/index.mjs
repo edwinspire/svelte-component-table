@@ -3734,8 +3734,5 @@ class Table extends SvelteComponent {
 }
 
 const types = require("./src/Table/Column/DefaultTypes.js");
-//export { default as default } from "./Table/Table.svelte";
-module.exports = {
-  Table: Table,
-  ColumnTypes: types,
-};
+
+export { types as ColumnTypes, Table };

@@ -4,7 +4,7 @@
   export const props = {};
   let option = "default";
 
-  if (props.option) {
+  if (props && props.option) {
     option = props.option;
   }
 </script>

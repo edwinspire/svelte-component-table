@@ -1,13 +1,20 @@
 <script>
   export let value;
   let show = false;
+  let LimitMax = 30;
+  export const props = {};
+
+  if (props && props.limit) {
+    LimitMax = props.limit;
+  }
+
   function ClickShow() {
     show = !show;
   }
 </script>
 
 <td class="" on:click>
-  {#if value && typeof value === "string" && value.length > 30}
+  {#if value && typeof value === "string" && value.length > LimitMax}
     {#if show}
       <div>
         {value}
@@ -15,7 +22,7 @@
       </div>
     {:else}
       <div>
-        {value.substring(0, 30)}...
+        {value.substring(0, LimitMax)}...
         <span class="btn_show" on:click={ClickShow}> ver más</span>
       </div>
     {/if}

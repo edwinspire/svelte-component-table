@@ -7,12 +7,14 @@
   let format = "yyyy-MM-dd HH:mm:ss";
   let HighlightIsntToday = false;
 
-  if (props.format) {
-    format = props.format;
-  }
+  if (props) {
+    if (props.format) {
+      format = props.format;
+    }
 
-  if (props.highlight_isnt_today) {
-    HighlightIsntToday = true;
+    if (props.highlight_isnt_today) {
+      HighlightIsntToday = true;
+    }
   }
 
   function fn_DC01() {

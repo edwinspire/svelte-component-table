@@ -3739,7 +3739,7 @@
     	}
     }
 
-    const types = require("./src/Table/Column/DefaultTypes.js");
+    const types = require("./Table/Column/DefaultTypes.js");
 
     exports.ColumnTypes = types;
     exports.Table = Table;

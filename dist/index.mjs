@@ -3733,6 +3733,6 @@ class Table extends SvelteComponent {
 	}
 }
 
-const types = require("./src/Table/Column/DefaultTypes.js");
+const types = require("./Table/Column/DefaultTypes.js");
 
 export { types as ColumnTypes, Table };

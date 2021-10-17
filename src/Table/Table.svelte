@@ -392,19 +392,20 @@
 
   <!-- Right side -->
   <div class="level-right">
-    <div class="level-item" title="Intervalo de refresco">
-      <button class="button is-small" on:click={ChangeIntervalRefresh}>
-        <span class="icon">
-          {#if loading}
-            <i class="fas fa-spinner fa-pulse" />
-          {:else}
-            <i class="fas fa-hourglass-half" />
-          {/if}
-        </span>
-        <span>{IntervalRefresh[IntervalRefreshSelected]}s</span>
-      </button>
-    </div>
-
+    {#if url}
+      <div class="level-item" title="Intervalo de refresco">
+        <button class="button is-small" on:click={ChangeIntervalRefresh}>
+          <span class="icon">
+            {#if loading}
+              <i class="fas fa-spinner fa-pulse" />
+            {:else}
+              <i class="fas fa-hourglass-half" />
+            {/if}
+          </span>
+          <span>{IntervalRefresh[IntervalRefreshSelected]}s</span>
+        </button>
+      </div>
+    {/if}
     <!-- <slot name="item-1" class="level-item" /> -->
     {#if $$slots.item1}
       <div class="level-item">

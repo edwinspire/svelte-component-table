@@ -576,7 +576,80 @@
     	};
     }
 
-    // (400:10) {:else}
+    // (395:4) {#if url}
+    function create_if_block_24(ctx) {
+    	let div;
+    	let button;
+    	let span0;
+    	let t0;
+    	let span1;
+    	let t1_value = /*IntervalRefresh*/ ctx[18][/*IntervalRefreshSelected*/ ctx[1]] + "";
+    	let t1;
+    	let t2;
+    	let mounted;
+    	let dispose;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*loading*/ ctx[8]) return create_if_block_25;
+    		return create_else_block_2;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	return {
+    		c() {
+    			div = element("div");
+    			button = element("button");
+    			span0 = element("span");
+    			if_block.c();
+    			t0 = space();
+    			span1 = element("span");
+    			t1 = text(t1_value);
+    			t2 = text("s");
+    			attr(span0, "class", "icon");
+    			attr(button, "class", "button is-small");
+    			attr(div, "class", "level-item");
+    			attr(div, "title", "Intervalo de refresco");
+    		},
+    		m(target, anchor) {
+    			insert(target, div, anchor);
+    			append(div, button);
+    			append(button, span0);
+    			if_block.m(span0, null);
+    			append(button, t0);
+    			append(button, span1);
+    			append(span1, t1);
+    			append(span1, t2);
+
+    			if (!mounted) {
+    				dispose = listen(button, "click", /*ChangeIntervalRefresh*/ ctx[20]);
+    				mounted = true;
+    			}
+    		},
+    		p(ctx, dirty) {
+    			if (current_block_type !== (current_block_type = select_block_type(ctx))) {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(span0, null);
+    				}
+    			}
+
+    			if (dirty[0] & /*IntervalRefreshSelected*/ 2 && t1_value !== (t1_value = /*IntervalRefresh*/ ctx[18][/*IntervalRefreshSelected*/ ctx[1]] + "")) set_data(t1, t1_value);
+    		},
+    		d(detaching) {
+    			if (detaching) detach(div);
+    			if_block.d();
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+    }
+
+    // (401:12) {:else}
     function create_else_block_2(ctx) {
     	let i;
 
@@ -594,8 +667,8 @@
     	};
     }
 
-    // (398:10) {#if loading}
-    function create_if_block_24(ctx) {
+    // (399:12) {#if loading}
+    function create_if_block_25(ctx) {
     	let i;
 
     	return {
@@ -612,7 +685,7 @@
     	};
     }
 
-    // (409:4) {#if $$slots.item1}
+    // (410:4) {#if $$slots.item1}
     function create_if_block_23(ctx) {
     	let div;
     	let current;
@@ -666,7 +739,7 @@
     	};
     }
 
-    // (414:4) {#if $$slots.item2}
+    // (415:4) {#if $$slots.item2}
     function create_if_block_22(ctx) {
     	let div;
     	let current;
@@ -720,7 +793,7 @@
     	};
     }
 
-    // (419:4) {#if $$slots.item3}
+    // (420:4) {#if $$slots.item3}
     function create_if_block_21(ctx) {
     	let div;
     	let current;
@@ -774,7 +847,7 @@
     	};
     }
 
-    // (424:4) {#if $$slots.item4}
+    // (425:4) {#if $$slots.item4}
     function create_if_block_20(ctx) {
     	let div;
     	let current;
@@ -828,7 +901,7 @@
     	};
     }
 
-    // (429:4) {#if $$slots.item5}
+    // (430:4) {#if $$slots.item5}
     function create_if_block_19(ctx) {
     	let div;
     	let current;
@@ -882,7 +955,7 @@
     	};
     }
 
-    // (435:4) {#if ShowNewButton}
+    // (436:4) {#if ShowNewButton}
     function create_if_block_18(ctx) {
     	let div;
     	let button;
@@ -903,7 +976,7 @@
     			append(div, button);
 
     			if (!mounted) {
-    				dispose = listen(button, "click", /*HClickNew*/ ctx[22]);
+    				dispose = listen(button, "click", /*HClickNew*/ ctx[23]);
     				mounted = true;
     			}
     		},
@@ -916,7 +989,7 @@
     	};
     }
 
-    // (445:4) {#if ShowEditButton}
+    // (446:4) {#if ShowEditButton}
     function create_if_block_17(ctx) {
     	let div;
     	let button;
@@ -937,7 +1010,7 @@
     			append(div, button);
 
     			if (!mounted) {
-    				dispose = listen(button, "click", /*HandleOnClickEdit*/ ctx[29]);
+    				dispose = listen(button, "click", /*HandleOnClickEdit*/ ctx[30]);
     				mounted = true;
     			}
     		},
@@ -950,7 +1023,7 @@
     	};
     }
 
-    // (803:0) {:else}
+    // (804:0) {:else}
     function create_else_block_1(ctx) {
     	let div;
 
@@ -975,7 +1048,7 @@
     	};
     }
 
-    // (555:0) {#if DataTable && DataTable.length > 0}
+    // (556:0) {#if DataTable && DataTable.length > 0}
     function create_if_block(ctx) {
     	let div0;
     	let table;
@@ -1011,15 +1084,15 @@
     	let dispose;
     	let if_block0 = /*SelectionType*/ ctx[0] == 1 && create_if_block_16();
     	let if_block1 = /*SelectionType*/ ctx[0] == 2 && create_if_block_15(ctx);
-    	let if_block2 = /*showEdit*/ ctx[8] && create_if_block_14();
-    	let each_value_3 = Object.keys(/*DataTable*/ ctx[5][0]);
+    	let if_block2 = /*showEdit*/ ctx[9] && create_if_block_14();
+    	let each_value_3 = Object.keys(/*DataTable*/ ctx[6][0]);
     	let each_blocks_1 = [];
 
     	for (let i = 0; i < each_value_3.length; i += 1) {
     		each_blocks_1[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
     	}
 
-    	let each_value_1 = /*DataTable*/ ctx[5];
+    	let each_value_1 = /*DataTable*/ ctx[6];
     	const get_key = ctx => /*dataRow*/ ctx[75].internal_hash_row;
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
@@ -1028,7 +1101,7 @@
     		each1_lookup.set(key, each_blocks[i] = create_each_block_1(key, child_ctx));
     	}
 
-    	let if_block3 = /*paginatedData*/ ctx[14] && /*paginatedData*/ ctx[14].length > 1 && create_if_block_1(ctx);
+    	let if_block3 = /*paginatedData*/ ctx[15] && /*paginatedData*/ ctx[15].length > 1 && create_if_block_1(ctx);
 
     	return {
     		c() {
@@ -1097,7 +1170,7 @@
     			option4.__value = "300";
     			option4.value = option4.__value;
     			attr(select, "name", "rows_per_page");
-    			if (/*RowsPerPage*/ ctx[11] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[52].call(select));
+    			if (/*RowsPerPage*/ ctx[12] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[52].call(select));
     			attr(div2, "class", "select is-small");
     			attr(span1, "class", "level-item");
     			attr(div3, "class", "level-right");
@@ -1146,7 +1219,7 @@
     			append(select, option2);
     			append(select, option3);
     			append(select, option4);
-    			select_option(select, /*RowsPerPage*/ ctx[11]);
+    			select_option(select, /*RowsPerPage*/ ctx[12]);
     			current = true;
 
     			if (!mounted) {
@@ -1183,7 +1256,7 @@
     				if_block1 = null;
     			}
 
-    			if (/*showEdit*/ ctx[8]) {
+    			if (/*showEdit*/ ctx[9]) {
     				if (if_block2) ; else {
     					if_block2 = create_if_block_14();
     					if_block2.c();
@@ -1194,8 +1267,8 @@
     				if_block2 = null;
     			}
 
-    			if (dirty[0] & /*DataTable, HClickHeader, internal_columns*/ 8421408) {
-    				each_value_3 = Object.keys(/*DataTable*/ ctx[5][0]);
+    			if (dirty[0] & /*DataTable, HClickHeader, internal_columns*/ 16842816) {
+    				each_value_3 = Object.keys(/*DataTable*/ ctx[6][0]);
     				let i;
 
     				for (i = 0; i < each_value_3.length; i += 1) {
@@ -1217,14 +1290,14 @@
     				each_blocks_1.length = each_value_3.length;
     			}
 
-    			if (dirty[0] & /*DataTable, internal_columns, HClickCell, Json, HClickEditRow, showEdit, RowIsSelected, HandleOnRowSelected, SelectionType, RowsPerPage, PageSelected*/ 1077251361) {
-    				each_value_1 = /*DataTable*/ ctx[5];
+    			if (dirty[0] & /*DataTable, internal_columns, HClickCell, Json, HClickEditRow, showEdit, RowIsSelected, SelectionType, RowsPerPage, PageSelected*/ 7019073 | dirty[1] & /*HandleOnRowSelected*/ 1) {
+    				each_value_1 = /*DataTable*/ ctx[6];
     				group_outros();
     				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value_1, each1_lookup, tbody, outro_and_destroy_block, create_each_block_1, null, get_each_context_1);
     				check_outros();
     			}
 
-    			if (/*paginatedData*/ ctx[14] && /*paginatedData*/ ctx[14].length > 1) {
+    			if (/*paginatedData*/ ctx[15] && /*paginatedData*/ ctx[15].length > 1) {
     				if (if_block3) {
     					if_block3.p(ctx, dirty);
     				} else {
@@ -1237,8 +1310,8 @@
     				if_block3 = null;
     			}
 
-    			if (dirty[0] & /*RowsPerPage*/ 2048) {
-    				select_option(select, /*RowsPerPage*/ ctx[11]);
+    			if (dirty[0] & /*RowsPerPage*/ 4096) {
+    				select_option(select, /*RowsPerPage*/ ctx[12]);
     			}
     		},
     		i(local) {
@@ -1277,7 +1350,7 @@
     	};
     }
 
-    // (564:10) {#if SelectionType == 1}
+    // (565:10) {#if SelectionType == 1}
     function create_if_block_16(ctx) {
     	let th;
 
@@ -1296,7 +1369,7 @@
     	};
     }
 
-    // (568:10) {#if SelectionType == 2}
+    // (569:10) {#if SelectionType == 2}
     function create_if_block_15(ctx) {
     	let th;
     	let input;
@@ -1315,7 +1388,7 @@
     			append(th, input);
 
     			if (!mounted) {
-    				dispose = listen(input, "click", /*handleChangeSelectAll*/ ctx[25]);
+    				dispose = listen(input, "click", /*handleChangeSelectAll*/ ctx[26]);
     				mounted = true;
     			}
     		},
@@ -1328,7 +1401,7 @@
     	};
     }
 
-    // (574:10) {#if showEdit}
+    // (575:10) {#if showEdit}
     function create_if_block_14(ctx) {
     	let th;
 
@@ -1347,10 +1420,10 @@
     	};
     }
 
-    // (582:12) {#if internal_columns[item]}
+    // (583:12) {#if internal_columns[item]}
     function create_if_block_12(ctx) {
     	let if_block_anchor;
-    	let if_block = (!/*internal_columns*/ ctx[15][/*item*/ ctx[78]].hidden || !/*internal_columns*/ ctx[15][/*item*/ ctx[78]].hidden == null) && create_if_block_13(ctx);
+    	let if_block = (!/*internal_columns*/ ctx[16][/*item*/ ctx[78]].hidden || !/*internal_columns*/ ctx[16][/*item*/ ctx[78]].hidden == null) && create_if_block_13(ctx);
 
     	return {
     		c() {
@@ -1362,7 +1435,7 @@
     			insert(target, if_block_anchor, anchor);
     		},
     		p(ctx, dirty) {
-    			if (!/*internal_columns*/ ctx[15][/*item*/ ctx[78]].hidden || !/*internal_columns*/ ctx[15][/*item*/ ctx[78]].hidden == null) {
+    			if (!/*internal_columns*/ ctx[16][/*item*/ ctx[78]].hidden || !/*internal_columns*/ ctx[16][/*item*/ ctx[78]].hidden == null) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -1382,10 +1455,10 @@
     	};
     }
 
-    // (583:14) {#if !internal_columns[item].hidden || !internal_columns[item].hidden == null}
+    // (584:14) {#if !internal_columns[item].hidden || !internal_columns[item].hidden == null}
     function create_if_block_13(ctx) {
     	let th;
-    	let t0_value = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].label + "";
+    	let t0_value = /*internal_columns*/ ctx[16][/*item*/ ctx[78]].label + "";
     	let t0;
     	let t1;
     	let th_data_column_value;
@@ -1406,14 +1479,14 @@
     			append(th, t1);
 
     			if (!mounted) {
-    				dispose = listen(th, "click", /*HClickHeader*/ ctx[23]);
+    				dispose = listen(th, "click", /*HClickHeader*/ ctx[24]);
     				mounted = true;
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty[0] & /*internal_columns, DataTable*/ 32800 && t0_value !== (t0_value = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].label + "")) set_data(t0, t0_value);
+    			if (dirty[0] & /*internal_columns, DataTable*/ 65600 && t0_value !== (t0_value = /*internal_columns*/ ctx[16][/*item*/ ctx[78]].label + "")) set_data(t0, t0_value);
 
-    			if (dirty[0] & /*DataTable*/ 32 && th_data_column_value !== (th_data_column_value = /*item*/ ctx[78])) {
+    			if (dirty[0] & /*DataTable*/ 64 && th_data_column_value !== (th_data_column_value = /*item*/ ctx[78])) {
     				attr(th, "data-column", th_data_column_value);
     			}
     		},
@@ -1425,10 +1498,10 @@
     	};
     }
 
-    // (580:10) {#each Object.keys(DataTable[0]) as item, ith}
+    // (581:10) {#each Object.keys(DataTable[0]) as item, ith}
     function create_each_block_3(ctx) {
     	let if_block_anchor;
-    	let if_block = /*internal_columns*/ ctx[15][/*item*/ ctx[78]] && create_if_block_12(ctx);
+    	let if_block = /*internal_columns*/ ctx[16][/*item*/ ctx[78]] && create_if_block_12(ctx);
 
     	return {
     		c() {
@@ -1440,7 +1513,7 @@
     			insert(target, if_block_anchor, anchor);
     		},
     		p(ctx, dirty) {
-    			if (/*internal_columns*/ ctx[15][/*item*/ ctx[78]]) {
+    			if (/*internal_columns*/ ctx[16][/*item*/ ctx[78]]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -1460,7 +1533,7 @@
     	};
     }
 
-    // (601:12) {#if SelectionType == 1}
+    // (602:12) {#if SelectionType == 1}
     function create_if_block_11(ctx) {
     	let td;
     	let input;
@@ -1476,7 +1549,7 @@
     			attr(input, "type", "radio");
     			attr(input, "name", "single_select");
     			attr(input, "class", "show_cursor_mouse svelte-mc39ac");
-    			input.checked = input_checked_value = /*RowIsSelected*/ ctx[18](/*dataRow*/ ctx[75].internal_hash_row);
+    			input.checked = input_checked_value = /*RowIsSelected*/ ctx[19](/*dataRow*/ ctx[75].internal_hash_row);
     			attr(input, "data-internal_hash_row", input_data_internal_hash_row_value = /*dataRow*/ ctx[75].internal_hash_row);
     			attr(td, "class", "has-text-centered");
     		},
@@ -1485,16 +1558,16 @@
     			append(td, input);
 
     			if (!mounted) {
-    				dispose = listen(input, "click", /*HandleOnRowSelected*/ ctx[30]);
+    				dispose = listen(input, "click", /*HandleOnRowSelected*/ ctx[31]);
     				mounted = true;
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty[0] & /*DataTable*/ 32 && input_checked_value !== (input_checked_value = /*RowIsSelected*/ ctx[18](/*dataRow*/ ctx[75].internal_hash_row))) {
+    			if (dirty[0] & /*DataTable*/ 64 && input_checked_value !== (input_checked_value = /*RowIsSelected*/ ctx[19](/*dataRow*/ ctx[75].internal_hash_row))) {
     				input.checked = input_checked_value;
     			}
 
-    			if (dirty[0] & /*DataTable*/ 32 && input_data_internal_hash_row_value !== (input_data_internal_hash_row_value = /*dataRow*/ ctx[75].internal_hash_row)) {
+    			if (dirty[0] & /*DataTable*/ 64 && input_data_internal_hash_row_value !== (input_data_internal_hash_row_value = /*dataRow*/ ctx[75].internal_hash_row)) {
     				attr(input, "data-internal_hash_row", input_data_internal_hash_row_value);
     			}
     		},
@@ -1506,7 +1579,7 @@
     	};
     }
 
-    // (614:12) {#if SelectionType == 2}
+    // (615:12) {#if SelectionType == 2}
     function create_if_block_10(ctx) {
     	let td;
     	let input;
@@ -1521,7 +1594,7 @@
     			input = element("input");
     			attr(input, "class", "show_cursor_mouse svelte-mc39ac");
     			attr(input, "type", "checkbox");
-    			input.checked = input_checked_value = /*RowIsSelected*/ ctx[18](/*dataRow*/ ctx[75].internal_hash_row);
+    			input.checked = input_checked_value = /*RowIsSelected*/ ctx[19](/*dataRow*/ ctx[75].internal_hash_row);
     			attr(input, "data-internal_hash_row", input_data_internal_hash_row_value = /*dataRow*/ ctx[75].internal_hash_row);
     			attr(td, "class", "has-text-centered");
     		},
@@ -1530,16 +1603,16 @@
     			append(td, input);
 
     			if (!mounted) {
-    				dispose = listen(input, "click", /*HandleOnRowSelected*/ ctx[30]);
+    				dispose = listen(input, "click", /*HandleOnRowSelected*/ ctx[31]);
     				mounted = true;
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty[0] & /*DataTable*/ 32 && input_checked_value !== (input_checked_value = /*RowIsSelected*/ ctx[18](/*dataRow*/ ctx[75].internal_hash_row))) {
+    			if (dirty[0] & /*DataTable*/ 64 && input_checked_value !== (input_checked_value = /*RowIsSelected*/ ctx[19](/*dataRow*/ ctx[75].internal_hash_row))) {
     				input.checked = input_checked_value;
     			}
 
-    			if (dirty[0] & /*DataTable*/ 32 && input_data_internal_hash_row_value !== (input_data_internal_hash_row_value = /*dataRow*/ ctx[75].internal_hash_row)) {
+    			if (dirty[0] & /*DataTable*/ 64 && input_data_internal_hash_row_value !== (input_data_internal_hash_row_value = /*dataRow*/ ctx[75].internal_hash_row)) {
     				attr(input, "data-internal_hash_row", input_data_internal_hash_row_value);
     			}
     		},
@@ -1551,7 +1624,7 @@
     	};
     }
 
-    // (626:12) {#if showEdit}
+    // (627:12) {#if showEdit}
     function create_if_block_9(ctx) {
     	let td;
     	let mounted;
@@ -1568,7 +1641,7 @@
 
     			if (!mounted) {
     				dispose = listen(td, "click", function () {
-    					if (is_function(/*HClickEditRow*/ ctx[21](/*dataRow*/ ctx[75]))) /*HClickEditRow*/ ctx[21](/*dataRow*/ ctx[75]).apply(this, arguments);
+    					if (is_function(/*HClickEditRow*/ ctx[22](/*dataRow*/ ctx[75]))) /*HClickEditRow*/ ctx[22](/*dataRow*/ ctx[75]).apply(this, arguments);
     				});
 
     				mounted = true;
@@ -1585,11 +1658,11 @@
     	};
     }
 
-    // (638:14) {#if internal_columns[item]}
+    // (639:14) {#if internal_columns[item]}
     function create_if_block_6(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = (!/*internal_columns*/ ctx[15][/*item*/ ctx[78]].hidden || /*internal_columns*/ ctx[15][/*item*/ ctx[78]].hidden == null) && create_if_block_7(ctx);
+    	let if_block = (!/*internal_columns*/ ctx[16][/*item*/ ctx[78]].hidden || /*internal_columns*/ ctx[16][/*item*/ ctx[78]].hidden == null) && create_if_block_7(ctx);
 
     	return {
     		c() {
@@ -1602,11 +1675,11 @@
     			current = true;
     		},
     		p(ctx, dirty) {
-    			if (!/*internal_columns*/ ctx[15][/*item*/ ctx[78]].hidden || /*internal_columns*/ ctx[15][/*item*/ ctx[78]].hidden == null) {
+    			if (!/*internal_columns*/ ctx[16][/*item*/ ctx[78]].hidden || /*internal_columns*/ ctx[16][/*item*/ ctx[78]].hidden == null) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty[0] & /*internal_columns, DataTable*/ 32800) {
+    					if (dirty[0] & /*internal_columns, DataTable*/ 65600) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -1641,7 +1714,7 @@
     	};
     }
 
-    // (639:16) {#if !internal_columns[item].hidden || internal_columns[item].hidden == null}
+    // (640:16) {#if !internal_columns[item].hidden || internal_columns[item].hidden == null}
     function create_if_block_7(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -1651,7 +1724,7 @@
     	const if_blocks = [];
 
     	function select_block_type_2(ctx, dirty) {
-    		if (/*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator && /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.component) return 0;
+    		if (/*internal_columns*/ ctx[16][/*item*/ ctx[78]].decorator && /*internal_columns*/ ctx[16][/*item*/ ctx[78]].decorator.component) return 0;
     		return 1;
     	}
 
@@ -1711,12 +1784,12 @@
     	};
     }
 
-    // (648:18) {:else}
+    // (649:18) {:else}
     function create_else_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
     	let current;
-    	var switch_value = /*Json*/ ctx[16];
+    	var switch_value = /*Json*/ ctx[17];
 
     	function switch_props(ctx) {
     		return {
@@ -1732,7 +1805,7 @@
     		switch_instance = new switch_value(switch_props(ctx));
 
     		switch_instance.$on("click", function () {
-    			if (is_function(/*HClickCell*/ ctx[20](/*item*/ ctx[78], /*dataRow*/ ctx[75]))) /*HClickCell*/ ctx[20](/*item*/ ctx[78], /*dataRow*/ ctx[75]).apply(this, arguments);
+    			if (is_function(/*HClickCell*/ ctx[21](/*item*/ ctx[78], /*dataRow*/ ctx[75]))) /*HClickCell*/ ctx[21](/*item*/ ctx[78], /*dataRow*/ ctx[75]).apply(this, arguments);
     		});
     	}
 
@@ -1752,10 +1825,10 @@
     		p(new_ctx, dirty) {
     			ctx = new_ctx;
     			const switch_instance_changes = {};
-    			if (dirty[0] & /*DataTable*/ 32) switch_instance_changes.row = /*dataRow*/ ctx[75];
-    			if (dirty[0] & /*DataTable*/ 32) switch_instance_changes.value = /*dataRow*/ ctx[75][/*item*/ ctx[78]];
+    			if (dirty[0] & /*DataTable*/ 64) switch_instance_changes.row = /*dataRow*/ ctx[75];
+    			if (dirty[0] & /*DataTable*/ 64) switch_instance_changes.value = /*dataRow*/ ctx[75][/*item*/ ctx[78]];
 
-    			if (switch_value !== (switch_value = /*Json*/ ctx[16])) {
+    			if (switch_value !== (switch_value = /*Json*/ ctx[17])) {
     				if (switch_instance) {
     					group_outros();
     					const old_component = switch_instance;
@@ -1771,7 +1844,7 @@
     					switch_instance = new switch_value(switch_props(ctx));
 
     					switch_instance.$on("click", function () {
-    						if (is_function(/*HClickCell*/ ctx[20](/*item*/ ctx[78], /*dataRow*/ ctx[75]))) /*HClickCell*/ ctx[20](/*item*/ ctx[78], /*dataRow*/ ctx[75]).apply(this, arguments);
+    						if (is_function(/*HClickCell*/ ctx[21](/*item*/ ctx[78], /*dataRow*/ ctx[75]))) /*HClickCell*/ ctx[21](/*item*/ ctx[78], /*dataRow*/ ctx[75]).apply(this, arguments);
     					});
 
     					create_component(switch_instance.$$.fragment);
@@ -1800,17 +1873,17 @@
     	};
     }
 
-    // (640:18) {#if internal_columns[item].decorator && internal_columns[item].decorator.component}
+    // (641:18) {#if internal_columns[item].decorator && internal_columns[item].decorator.component}
     function create_if_block_8(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
     	let current;
-    	var switch_value = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.component;
+    	var switch_value = /*internal_columns*/ ctx[16][/*item*/ ctx[78]].decorator.component;
 
     	function switch_props(ctx) {
     		return {
     			props: {
-    				props: /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.props,
+    				props: /*internal_columns*/ ctx[16][/*item*/ ctx[78]].decorator.props,
     				row: /*dataRow*/ ctx[75],
     				value: /*dataRow*/ ctx[75][/*item*/ ctx[78]]
     			}
@@ -1821,7 +1894,7 @@
     		switch_instance = new switch_value(switch_props(ctx));
 
     		switch_instance.$on("click", function () {
-    			if (is_function(/*HClickCell*/ ctx[20](/*item*/ ctx[78], /*dataRow*/ ctx[75]))) /*HClickCell*/ ctx[20](/*item*/ ctx[78], /*dataRow*/ ctx[75]).apply(this, arguments);
+    			if (is_function(/*HClickCell*/ ctx[21](/*item*/ ctx[78], /*dataRow*/ ctx[75]))) /*HClickCell*/ ctx[21](/*item*/ ctx[78], /*dataRow*/ ctx[75]).apply(this, arguments);
     		});
     	}
 
@@ -1841,11 +1914,11 @@
     		p(new_ctx, dirty) {
     			ctx = new_ctx;
     			const switch_instance_changes = {};
-    			if (dirty[0] & /*internal_columns, DataTable*/ 32800) switch_instance_changes.props = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.props;
-    			if (dirty[0] & /*DataTable*/ 32) switch_instance_changes.row = /*dataRow*/ ctx[75];
-    			if (dirty[0] & /*DataTable*/ 32) switch_instance_changes.value = /*dataRow*/ ctx[75][/*item*/ ctx[78]];
+    			if (dirty[0] & /*internal_columns, DataTable*/ 65600) switch_instance_changes.props = /*internal_columns*/ ctx[16][/*item*/ ctx[78]].decorator.props;
+    			if (dirty[0] & /*DataTable*/ 64) switch_instance_changes.row = /*dataRow*/ ctx[75];
+    			if (dirty[0] & /*DataTable*/ 64) switch_instance_changes.value = /*dataRow*/ ctx[75][/*item*/ ctx[78]];
 
-    			if (switch_value !== (switch_value = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.component)) {
+    			if (switch_value !== (switch_value = /*internal_columns*/ ctx[16][/*item*/ ctx[78]].decorator.component)) {
     				if (switch_instance) {
     					group_outros();
     					const old_component = switch_instance;
@@ -1861,7 +1934,7 @@
     					switch_instance = new switch_value(switch_props(ctx));
 
     					switch_instance.$on("click", function () {
-    						if (is_function(/*HClickCell*/ ctx[20](/*item*/ ctx[78], /*dataRow*/ ctx[75]))) /*HClickCell*/ ctx[20](/*item*/ ctx[78], /*dataRow*/ ctx[75]).apply(this, arguments);
+    						if (is_function(/*HClickCell*/ ctx[21](/*item*/ ctx[78], /*dataRow*/ ctx[75]))) /*HClickCell*/ ctx[21](/*item*/ ctx[78], /*dataRow*/ ctx[75]).apply(this, arguments);
     					});
 
     					create_component(switch_instance.$$.fragment);
@@ -1890,11 +1963,11 @@
     	};
     }
 
-    // (636:12) {#each Object.keys(dataRow) as item, itd}
+    // (637:12) {#each Object.keys(dataRow) as item, itd}
     function create_each_block_2(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*internal_columns*/ ctx[15][/*item*/ ctx[78]] && create_if_block_6(ctx);
+    	let if_block = /*internal_columns*/ ctx[16][/*item*/ ctx[78]] && create_if_block_6(ctx);
 
     	return {
     		c() {
@@ -1907,11 +1980,11 @@
     			current = true;
     		},
     		p(ctx, dirty) {
-    			if (/*internal_columns*/ ctx[15][/*item*/ ctx[78]]) {
+    			if (/*internal_columns*/ ctx[16][/*item*/ ctx[78]]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty[0] & /*internal_columns, DataTable*/ 32800) {
+    					if (dirty[0] & /*internal_columns, DataTable*/ 65600) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -1946,11 +2019,11 @@
     	};
     }
 
-    // (598:8) {#each DataTable as dataRow, i (dataRow.internal_hash_row)}
+    // (599:8) {#each DataTable as dataRow, i (dataRow.internal_hash_row)}
     function create_each_block_1(key_1, ctx) {
     	let tr;
     	let td;
-    	let t0_value = /*i*/ ctx[77] + 1 + /*RowsPerPage*/ ctx[11] * (/*PageSelected*/ ctx[10] - 1) + "";
+    	let t0_value = /*i*/ ctx[77] + 1 + /*RowsPerPage*/ ctx[12] * (/*PageSelected*/ ctx[11] - 1) + "";
     	let t0;
     	let t1;
     	let t2;
@@ -1960,7 +2033,7 @@
     	let current;
     	let if_block0 = /*SelectionType*/ ctx[0] == 1 && create_if_block_11(ctx);
     	let if_block1 = /*SelectionType*/ ctx[0] == 2 && create_if_block_10(ctx);
-    	let if_block2 = /*showEdit*/ ctx[8] && create_if_block_9(ctx);
+    	let if_block2 = /*showEdit*/ ctx[9] && create_if_block_9(ctx);
     	let each_value_2 = Object.keys(/*dataRow*/ ctx[75]);
     	let each_blocks = [];
 
@@ -2015,7 +2088,7 @@
     		},
     		p(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if ((!current || dirty[0] & /*DataTable, RowsPerPage, PageSelected*/ 3104) && t0_value !== (t0_value = /*i*/ ctx[77] + 1 + /*RowsPerPage*/ ctx[11] * (/*PageSelected*/ ctx[10] - 1) + "")) set_data(t0, t0_value);
+    			if ((!current || dirty[0] & /*DataTable, RowsPerPage, PageSelected*/ 6208) && t0_value !== (t0_value = /*i*/ ctx[77] + 1 + /*RowsPerPage*/ ctx[12] * (/*PageSelected*/ ctx[11] - 1) + "")) set_data(t0, t0_value);
 
     			if (/*SelectionType*/ ctx[0] == 1) {
     				if (if_block0) {
@@ -2043,7 +2116,7 @@
     				if_block1 = null;
     			}
 
-    			if (/*showEdit*/ ctx[8]) {
+    			if (/*showEdit*/ ctx[9]) {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
     				} else {
@@ -2056,7 +2129,7 @@
     				if_block2 = null;
     			}
 
-    			if (dirty[0] & /*internal_columns, DataTable, HClickCell, Json*/ 1146912) {
+    			if (dirty[0] & /*internal_columns, DataTable, HClickCell, Json*/ 2293824) {
     				each_value_2 = Object.keys(/*dataRow*/ ctx[75]);
     				let i;
 
@@ -2111,7 +2184,7 @@
     	};
     }
 
-    // (670:8) {#if paginatedData && paginatedData.length > 1}
+    // (671:8) {#if paginatedData && paginatedData.length > 1}
     function create_if_block_1(ctx) {
     	let div0;
     	let span0;
@@ -2141,21 +2214,21 @@
     	let button4;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*PageSelected*/ ctx[10] + 1 <= /*TotalPages*/ ctx[13] && create_if_block_5(ctx);
-    	let if_block1 = /*PageSelected*/ ctx[10] + 2 <= /*TotalPages*/ ctx[13] && create_if_block_4(ctx);
-    	let if_block2 = /*PageSelected*/ ctx[10] + 3 <= /*TotalPages*/ ctx[13] && create_if_block_3(ctx);
-    	let if_block3 = /*PageSelected*/ ctx[10] + 4 <= /*TotalPages*/ ctx[13] && create_if_block_2(ctx);
+    	let if_block0 = /*PageSelected*/ ctx[11] + 1 <= /*TotalPages*/ ctx[14] && create_if_block_5(ctx);
+    	let if_block1 = /*PageSelected*/ ctx[11] + 2 <= /*TotalPages*/ ctx[14] && create_if_block_4(ctx);
+    	let if_block2 = /*PageSelected*/ ctx[11] + 3 <= /*TotalPages*/ ctx[14] && create_if_block_3(ctx);
+    	let if_block3 = /*PageSelected*/ ctx[11] + 4 <= /*TotalPages*/ ctx[14] && create_if_block_2(ctx);
 
     	return {
     		c() {
     			div0 = element("div");
     			span0 = element("span");
     			t0 = text("Página ");
-    			t1 = text(/*PageSelected*/ ctx[10]);
+    			t1 = text(/*PageSelected*/ ctx[11]);
     			t2 = text(" de ");
-    			t3 = text(/*TotalPages*/ ctx[13]);
+    			t3 = text(/*TotalPages*/ ctx[14]);
     			t4 = text(" (Total ");
-    			t5 = text(/*totalFilteredRows*/ ctx[12]);
+    			t5 = text(/*totalFilteredRows*/ ctx[13]);
     			t6 = text("\n              filas)");
     			t7 = space();
     			div2 = element("div");
@@ -2167,7 +2240,7 @@
     			button1.innerHTML = `<span class="icon "><i class="fas fa-angle-left"></i></span>`;
     			t9 = space();
     			button2 = element("button");
-    			t10 = text(/*PageSelected*/ ctx[10]);
+    			t10 = text(/*PageSelected*/ ctx[11]);
     			t11 = space();
     			if (if_block0) if_block0.c();
     			t12 = space();
@@ -2237,12 +2310,12 @@
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty[0] & /*PageSelected*/ 1024) set_data(t1, /*PageSelected*/ ctx[10]);
-    			if (dirty[0] & /*TotalPages*/ 8192) set_data(t3, /*TotalPages*/ ctx[13]);
-    			if (dirty[0] & /*totalFilteredRows*/ 4096) set_data(t5, /*totalFilteredRows*/ ctx[12]);
-    			if (dirty[0] & /*PageSelected*/ 1024) set_data(t10, /*PageSelected*/ ctx[10]);
+    			if (dirty[0] & /*PageSelected*/ 2048) set_data(t1, /*PageSelected*/ ctx[11]);
+    			if (dirty[0] & /*TotalPages*/ 16384) set_data(t3, /*TotalPages*/ ctx[14]);
+    			if (dirty[0] & /*totalFilteredRows*/ 8192) set_data(t5, /*totalFilteredRows*/ ctx[13]);
+    			if (dirty[0] & /*PageSelected*/ 2048) set_data(t10, /*PageSelected*/ ctx[11]);
 
-    			if (/*PageSelected*/ ctx[10] + 1 <= /*TotalPages*/ ctx[13]) {
+    			if (/*PageSelected*/ ctx[11] + 1 <= /*TotalPages*/ ctx[14]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
@@ -2255,7 +2328,7 @@
     				if_block0 = null;
     			}
 
-    			if (/*PageSelected*/ ctx[10] + 2 <= /*TotalPages*/ ctx[13]) {
+    			if (/*PageSelected*/ ctx[11] + 2 <= /*TotalPages*/ ctx[14]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     				} else {
@@ -2268,7 +2341,7 @@
     				if_block1 = null;
     			}
 
-    			if (/*PageSelected*/ ctx[10] + 3 <= /*TotalPages*/ ctx[13]) {
+    			if (/*PageSelected*/ ctx[11] + 3 <= /*TotalPages*/ ctx[14]) {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
     				} else {
@@ -2281,7 +2354,7 @@
     				if_block2 = null;
     			}
 
-    			if (/*PageSelected*/ ctx[10] + 4 <= /*TotalPages*/ ctx[13]) {
+    			if (/*PageSelected*/ ctx[11] + 4 <= /*TotalPages*/ ctx[14]) {
     				if (if_block3) {
     					if_block3.p(ctx, dirty);
     				} else {
@@ -2308,10 +2381,10 @@
     	};
     }
 
-    // (710:14) {#if PageSelected + 1 <= TotalPages}
+    // (711:14) {#if PageSelected + 1 <= TotalPages}
     function create_if_block_5(ctx) {
     	let button;
-    	let t_value = /*PageSelected*/ ctx[10] + 1 + "";
+    	let t_value = /*PageSelected*/ ctx[11] + 1 + "";
     	let t;
     	let mounted;
     	let dispose;
@@ -2332,7 +2405,7 @@
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty[0] & /*PageSelected*/ 1024 && t_value !== (t_value = /*PageSelected*/ ctx[10] + 1 + "")) set_data(t, t_value);
+    			if (dirty[0] & /*PageSelected*/ 2048 && t_value !== (t_value = /*PageSelected*/ ctx[11] + 1 + "")) set_data(t, t_value);
     		},
     		d(detaching) {
     			if (detaching) detach(button);
@@ -2342,10 +2415,10 @@
     	};
     }
 
-    // (719:14) {#if PageSelected + 2 <= TotalPages}
+    // (720:14) {#if PageSelected + 2 <= TotalPages}
     function create_if_block_4(ctx) {
     	let button;
-    	let t_value = /*PageSelected*/ ctx[10] + 2 + "";
+    	let t_value = /*PageSelected*/ ctx[11] + 2 + "";
     	let t;
     	let mounted;
     	let dispose;
@@ -2366,7 +2439,7 @@
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty[0] & /*PageSelected*/ 1024 && t_value !== (t_value = /*PageSelected*/ ctx[10] + 2 + "")) set_data(t, t_value);
+    			if (dirty[0] & /*PageSelected*/ 2048 && t_value !== (t_value = /*PageSelected*/ ctx[11] + 2 + "")) set_data(t, t_value);
     		},
     		d(detaching) {
     			if (detaching) detach(button);
@@ -2376,10 +2449,10 @@
     	};
     }
 
-    // (729:14) {#if PageSelected + 3 <= TotalPages}
+    // (730:14) {#if PageSelected + 3 <= TotalPages}
     function create_if_block_3(ctx) {
     	let button;
-    	let t_value = /*PageSelected*/ ctx[10] + 3 + "";
+    	let t_value = /*PageSelected*/ ctx[11] + 3 + "";
     	let t;
     	let mounted;
     	let dispose;
@@ -2400,7 +2473,7 @@
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty[0] & /*PageSelected*/ 1024 && t_value !== (t_value = /*PageSelected*/ ctx[10] + 3 + "")) set_data(t, t_value);
+    			if (dirty[0] & /*PageSelected*/ 2048 && t_value !== (t_value = /*PageSelected*/ ctx[11] + 3 + "")) set_data(t, t_value);
     		},
     		d(detaching) {
     			if (detaching) detach(button);
@@ -2410,10 +2483,10 @@
     	};
     }
 
-    // (739:14) {#if PageSelected + 4 <= TotalPages}
+    // (740:14) {#if PageSelected + 4 <= TotalPages}
     function create_if_block_2(ctx) {
     	let button;
-    	let t_value = /*PageSelected*/ ctx[10] + 4 + "";
+    	let t_value = /*PageSelected*/ ctx[11] + 4 + "";
     	let t;
     	let mounted;
     	let dispose;
@@ -2434,7 +2507,7 @@
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty[0] & /*PageSelected*/ 1024 && t_value !== (t_value = /*PageSelected*/ ctx[10] + 4 + "")) set_data(t, t_value);
+    			if (dirty[0] & /*PageSelected*/ 2048 && t_value !== (t_value = /*PageSelected*/ ctx[11] + 4 + "")) set_data(t, t_value);
     		},
     		d(detaching) {
     			if (detaching) detach(button);
@@ -2444,7 +2517,7 @@
     	};
     }
 
-    // (829:8) {#each Object.keys(columns) as col}
+    // (830:8) {#each Object.keys(columns) as col}
     function create_each_block(ctx) {
     	let div;
     	let label;
@@ -2489,13 +2562,8 @@
     	let div0;
     	let span0;
     	let t0;
-    	let div11;
-    	let div2;
-    	let button0;
-    	let span1;
+    	let div10;
     	let t1;
-    	let span2;
-    	let t2_value = /*IntervalRefresh*/ ctx[17][/*IntervalRefreshSelected*/ ctx[1]] + "";
     	let t2;
     	let t3;
     	let t4;
@@ -2503,94 +2571,84 @@
     	let t6;
     	let t7;
     	let t8;
-    	let t9;
-    	let t10;
-    	let t11;
-    	let div7;
     	let div6;
-    	let div3;
-    	let t12;
     	let div5;
+    	let div2;
+    	let t9;
     	let div4;
+    	let div3;
     	let a0;
     	let input0;
+    	let t10;
+    	let span2;
+    	let t11;
+    	let span3;
     	let t13;
-    	let span4;
-    	let t14;
-    	let span5;
-    	let t16;
     	let a1;
     	let input1;
+    	let t14;
+    	let span4;
+    	let t15;
+    	let span5;
     	let t17;
-    	let span6;
-    	let t18;
-    	let span7;
-    	let t20;
     	let hr;
-    	let t21;
+    	let t18;
     	let a2;
     	let input2;
+    	let t19;
+    	let span6;
+    	let t20;
+    	let span7;
     	let t22;
-    	let span8;
+    	let div7;
+    	let button1;
     	let t23;
-    	let span9;
-    	let t25;
-    	let div8;
-    	let button2;
-    	let t26;
-    	let div10;
     	let div9;
+    	let div8;
     	let p0;
     	let input3;
-    	let t27;
+    	let t24;
     	let p1;
-    	let button3;
-    	let t28;
+    	let button2;
+    	let t25;
     	let current_block_type_index;
     	let if_block8;
-    	let t29;
-    	let div15;
-    	let div12;
-    	let t30;
+    	let t26;
     	let div14;
+    	let div11;
+    	let t27;
+    	let div13;
     	let header;
     	let p2;
-    	let t32;
+    	let t29;
+    	let button3;
+    	let t30;
+    	let section;
+    	let div12;
+    	let t31;
+    	let footer;
     	let button4;
     	let t33;
-    	let section;
-    	let div13;
-    	let t34;
-    	let footer;
     	let button5;
-    	let t36;
-    	let button6;
     	let current;
     	let mounted;
     	let dispose;
     	const title_slot_template = /*#slots*/ ctx[38].title;
     	const title_slot = create_slot(title_slot_template, ctx, /*$$scope*/ ctx[37], get_title_slot_context);
     	const title_slot_or_fallback = title_slot || fallback_block();
-
-    	function select_block_type(ctx, dirty) {
-    		if (/*loading*/ ctx[7]) return create_if_block_24;
-    		return create_else_block_2;
-    	}
-
-    	let current_block_type = select_block_type(ctx);
-    	let if_block0 = current_block_type(ctx);
-    	let if_block1 = /*$$slots*/ ctx[31].item1 && create_if_block_23(ctx);
-    	let if_block2 = /*$$slots*/ ctx[31].item2 && create_if_block_22(ctx);
-    	let if_block3 = /*$$slots*/ ctx[31].item3 && create_if_block_21(ctx);
-    	let if_block4 = /*$$slots*/ ctx[31].item4 && create_if_block_20(ctx);
-    	let if_block5 = /*$$slots*/ ctx[31].item5 && create_if_block_19(ctx);
-    	let if_block6 = /*ShowNewButton*/ ctx[3] && create_if_block_18(ctx);
-    	let if_block7 = /*ShowEditButton*/ ctx[4] && create_if_block_17(ctx);
+    	let if_block0 = /*url*/ ctx[3] && create_if_block_24(ctx);
+    	let if_block1 = /*$$slots*/ ctx[32].item1 && create_if_block_23(ctx);
+    	let if_block2 = /*$$slots*/ ctx[32].item2 && create_if_block_22(ctx);
+    	let if_block3 = /*$$slots*/ ctx[32].item3 && create_if_block_21(ctx);
+    	let if_block4 = /*$$slots*/ ctx[32].item4 && create_if_block_20(ctx);
+    	let if_block5 = /*$$slots*/ ctx[32].item5 && create_if_block_19(ctx);
+    	let if_block6 = /*ShowNewButton*/ ctx[4] && create_if_block_18(ctx);
+    	let if_block7 = /*ShowEditButton*/ ctx[5] && create_if_block_17(ctx);
     	const if_block_creators = [create_if_block, create_else_block_1];
     	const if_blocks = [];
 
     	function select_block_type_1(ctx, dirty) {
-    		if (/*DataTable*/ ctx[5] && /*DataTable*/ ctx[5].length > 0) return 0;
+    		if (/*DataTable*/ ctx[6] && /*DataTable*/ ctx[6].length > 0) return 0;
     		return 1;
     	}
 
@@ -2611,126 +2669,115 @@
     			span0 = element("span");
     			if (title_slot_or_fallback) title_slot_or_fallback.c();
     			t0 = space();
-    			div11 = element("div");
-    			div2 = element("div");
-    			button0 = element("button");
-    			span1 = element("span");
-    			if_block0.c();
+    			div10 = element("div");
+    			if (if_block0) if_block0.c();
     			t1 = space();
-    			span2 = element("span");
-    			t2 = text(t2_value);
-    			t3 = text("s");
-    			t4 = space();
     			if (if_block1) if_block1.c();
-    			t5 = space();
+    			t2 = space();
     			if (if_block2) if_block2.c();
-    			t6 = space();
+    			t3 = space();
     			if (if_block3) if_block3.c();
-    			t7 = space();
+    			t4 = space();
     			if (if_block4) if_block4.c();
-    			t8 = space();
+    			t5 = space();
     			if (if_block5) if_block5.c();
-    			t9 = space();
+    			t6 = space();
     			if (if_block6) if_block6.c();
-    			t10 = space();
+    			t7 = space();
     			if (if_block7) if_block7.c();
-    			t11 = space();
-    			div7 = element("div");
+    			t8 = space();
     			div6 = element("div");
-    			div3 = element("div");
-    			div3.innerHTML = `<button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu"><span class="icon"><i class="far fa-list-alt"></i></span></button>`;
-    			t12 = space();
     			div5 = element("div");
+    			div2 = element("div");
+    			div2.innerHTML = `<button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu"><span class="icon"><i class="far fa-list-alt"></i></span></button>`;
+    			t9 = space();
     			div4 = element("div");
+    			div3 = element("div");
     			a0 = element("a");
     			input0 = element("input");
+    			t10 = space();
+    			span2 = element("span");
+    			span2.innerHTML = `<i class="fas fa-check"></i>`;
+    			t11 = space();
+    			span3 = element("span");
+    			span3.textContent = "Simple";
     			t13 = space();
-    			span4 = element("span");
-    			span4.innerHTML = `<i class="fas fa-check"></i>`;
-    			t14 = space();
-    			span5 = element("span");
-    			span5.textContent = "Simple";
-    			t16 = space();
     			a1 = element("a");
     			input1 = element("input");
+    			t14 = space();
+    			span4 = element("span");
+    			span4.innerHTML = `<i class="fas fa-check-double"></i>`;
+    			t15 = space();
+    			span5 = element("span");
+    			span5.textContent = "Multiple";
     			t17 = space();
-    			span6 = element("span");
-    			span6.innerHTML = `<i class="fas fa-check-double"></i>`;
-    			t18 = space();
-    			span7 = element("span");
-    			span7.textContent = "Multiple";
-    			t20 = space();
     			hr = element("hr");
-    			t21 = space();
+    			t18 = space();
     			a2 = element("a");
     			input2 = element("input");
+    			t19 = space();
+    			span6 = element("span");
+    			span6.innerHTML = `<i class="fas fa-ban"></i>`;
+    			t20 = space();
+    			span7 = element("span");
+    			span7.textContent = "Ninguno";
     			t22 = space();
-    			span8 = element("span");
-    			span8.innerHTML = `<i class="fas fa-ban"></i>`;
+    			div7 = element("div");
+    			button1 = element("button");
+    			button1.innerHTML = `<span class="icon"><i class="far fa-file-excel"></i></span>`;
     			t23 = space();
-    			span9 = element("span");
-    			span9.textContent = "Ninguno";
-    			t25 = space();
-    			div8 = element("div");
-    			button2 = element("button");
-    			button2.innerHTML = `<span class="icon"><i class="far fa-file-excel"></i></span>`;
-    			t26 = space();
-    			div10 = element("div");
     			div9 = element("div");
+    			div8 = element("div");
     			p0 = element("p");
     			input3 = element("input");
-    			t27 = space();
+    			t24 = space();
     			p1 = element("p");
-    			button3 = element("button");
-    			button3.innerHTML = `<i class="fas fa-search"></i>`;
-    			t28 = space();
+    			button2 = element("button");
+    			button2.innerHTML = `<i class="fas fa-search"></i>`;
+    			t25 = space();
     			if_block8.c();
-    			t29 = space();
-    			div15 = element("div");
-    			div12 = element("div");
-    			t30 = space();
+    			t26 = space();
     			div14 = element("div");
+    			div11 = element("div");
+    			t27 = space();
+    			div13 = element("div");
     			header = element("header");
     			p2 = element("p");
     			p2.innerHTML = `<b><span>Columnas</span></b>`;
-    			t32 = space();
-    			button4 = element("button");
-    			t33 = space();
+    			t29 = space();
+    			button3 = element("button");
+    			t30 = space();
     			section = element("section");
-    			div13 = element("div");
+    			div12 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t34 = space();
+    			t31 = space();
     			footer = element("footer");
+    			button4 = element("button");
+    			button4.innerHTML = `<span>Aceptar</span>`;
+    			t33 = space();
     			button5 = element("button");
-    			button5.innerHTML = `<span>Aceptar</span>`;
-    			t36 = space();
-    			button6 = element("button");
-    			button6.innerHTML = `<span>Cancelar</span>`;
+    			button5.innerHTML = `<span>Cancelar</span>`;
     			attr(span0, "class", "margin_title svelte-mc39ac");
     			attr(div0, "class", "level-item");
     			attr(div1, "class", "level-left");
-    			attr(span1, "class", "icon");
-    			attr(button0, "class", "button is-small");
-    			attr(div2, "class", "level-item");
-    			attr(div2, "title", "Intervalo de refresco");
-    			attr(div3, "class", "dropdown-trigger");
+    			attr(div2, "class", "dropdown-trigger");
     			attr(input0, "class", "check_margin svelte-mc39ac");
     			attr(input0, "type", "radio");
     			attr(input0, "name", "selection_type");
     			input0.value = "1";
     			input0.checked = true;
-    			attr(span4, "class", "icon");
+    			attr(span2, "class", "icon");
     			attr(a0, "class", "dropdown-item is-size-7");
     			attr(input1, "class", "check_margin svelte-mc39ac");
     			attr(input1, "type", "radio");
     			attr(input1, "name", "selection_type");
     			input1.value = "2";
     			input1.checked = true;
-    			attr(span6, "class", "icon");
+    			attr(span4, "class", "icon");
     			attr(a1, "class", "dropdown-item is-size-7");
     			attr(hr, "class", "dropdown-divider");
     			attr(input2, "class", "check_margin svelte-mc39ac");
@@ -2738,40 +2785,40 @@
     			attr(input2, "name", "selection_type");
     			input2.value = "0";
     			input2.checked = true;
-    			attr(span8, "class", "icon");
+    			attr(span6, "class", "icon");
     			attr(a2, "class", "dropdown-item is-size-7");
-    			attr(div4, "class", "dropdown-content");
-    			attr(div5, "class", "dropdown-menu");
-    			attr(div5, "role", "menu");
-    			attr(div6, "class", "dropdown is-hoverable is-right");
+    			attr(div3, "class", "dropdown-content");
+    			attr(div4, "class", "dropdown-menu");
+    			attr(div4, "role", "menu");
+    			attr(div5, "class", "dropdown is-hoverable is-right");
+    			attr(div6, "class", "level-item");
+    			attr(div6, "title", "Selección");
+    			attr(button1, "class", "button is-small");
     			attr(div7, "class", "level-item");
-    			attr(div7, "title", "Selección");
-    			attr(button2, "class", "button is-small");
-    			attr(div8, "class", "level-item");
-    			attr(div8, "title", "Exportar Datos");
+    			attr(div7, "title", "Exportar Datos");
     			attr(input3, "class", "input size_search is-small svelte-mc39ac");
     			attr(input3, "type", "text");
     			attr(input3, "placeholder", "Buscar");
     			attr(p0, "class", "control");
-    			attr(button3, "class", "button is-small");
+    			attr(button2, "class", "button is-small");
     			attr(p1, "class", "control");
-    			attr(div9, "class", "field has-addons");
-    			attr(div10, "class", "level-item");
-    			attr(div11, "class", "level-right");
+    			attr(div8, "class", "field has-addons");
+    			attr(div9, "class", "level-item");
+    			attr(div10, "class", "level-right");
     			attr(nav, "class", "level");
-    			attr(div12, "class", "modal-background");
+    			attr(div11, "class", "modal-background");
     			attr(p2, "class", "modal-card-title has-text-white");
-    			attr(button4, "class", "delete");
-    			attr(button4, "aria-label", "close");
+    			attr(button3, "class", "delete");
+    			attr(button3, "aria-label", "close");
     			attr(header, "class", "modal-card-head has-background-dark");
-    			attr(div13, "class", "columns");
+    			attr(div12, "class", "columns");
     			attr(section, "class", "modal-card-body");
-    			attr(button5, "class", "button is-success is-small");
-    			attr(button6, "class", "button is-small");
+    			attr(button4, "class", "button is-success is-small");
+    			attr(button5, "class", "button is-small");
     			attr(footer, "class", "modal-card-foot has-background-dark");
-    			attr(div14, "class", "modal-card");
-    			attr(div15, "class", "modal");
-    			toggle_class(div15, "is-active", /*ShowDialogColumn*/ ctx[9]);
+    			attr(div13, "class", "modal-card");
+    			attr(div14, "class", "modal");
+    			toggle_class(div14, "is-active", /*ShowDialogColumn*/ ctx[10]);
     		},
     		m(target, anchor) {
     			insert(target, nav, anchor);
@@ -2784,107 +2831,99 @@
     			}
 
     			append(nav, t0);
-    			append(nav, div11);
-    			append(div11, div2);
-    			append(div2, button0);
-    			append(button0, span1);
-    			if_block0.m(span1, null);
-    			append(button0, t1);
-    			append(button0, span2);
-    			append(span2, t2);
-    			append(span2, t3);
-    			append(div11, t4);
-    			if (if_block1) if_block1.m(div11, null);
-    			append(div11, t5);
-    			if (if_block2) if_block2.m(div11, null);
-    			append(div11, t6);
-    			if (if_block3) if_block3.m(div11, null);
-    			append(div11, t7);
-    			if (if_block4) if_block4.m(div11, null);
-    			append(div11, t8);
-    			if (if_block5) if_block5.m(div11, null);
-    			append(div11, t9);
-    			if (if_block6) if_block6.m(div11, null);
-    			append(div11, t10);
-    			if (if_block7) if_block7.m(div11, null);
-    			append(div11, t11);
-    			append(div11, div7);
-    			append(div7, div6);
-    			append(div6, div3);
-    			append(div6, t12);
+    			append(nav, div10);
+    			if (if_block0) if_block0.m(div10, null);
+    			append(div10, t1);
+    			if (if_block1) if_block1.m(div10, null);
+    			append(div10, t2);
+    			if (if_block2) if_block2.m(div10, null);
+    			append(div10, t3);
+    			if (if_block3) if_block3.m(div10, null);
+    			append(div10, t4);
+    			if (if_block4) if_block4.m(div10, null);
+    			append(div10, t5);
+    			if (if_block5) if_block5.m(div10, null);
+    			append(div10, t6);
+    			if (if_block6) if_block6.m(div10, null);
+    			append(div10, t7);
+    			if (if_block7) if_block7.m(div10, null);
+    			append(div10, t8);
+    			append(div10, div6);
     			append(div6, div5);
+    			append(div5, div2);
+    			append(div5, t9);
     			append(div5, div4);
-    			append(div4, a0);
+    			append(div4, div3);
+    			append(div3, a0);
     			append(a0, input0);
-    			append(a0, t13);
-    			append(a0, span4);
-    			append(a0, t14);
-    			append(a0, span5);
-    			append(div4, t16);
-    			append(div4, a1);
+    			append(a0, t10);
+    			append(a0, span2);
+    			append(a0, t11);
+    			append(a0, span3);
+    			append(div3, t13);
+    			append(div3, a1);
     			append(a1, input1);
-    			append(a1, t17);
-    			append(a1, span6);
-    			append(a1, t18);
-    			append(a1, span7);
-    			append(div4, t20);
-    			append(div4, hr);
-    			append(div4, t21);
-    			append(div4, a2);
+    			append(a1, t14);
+    			append(a1, span4);
+    			append(a1, t15);
+    			append(a1, span5);
+    			append(div3, t17);
+    			append(div3, hr);
+    			append(div3, t18);
+    			append(div3, a2);
     			append(a2, input2);
-    			append(a2, t22);
-    			append(a2, span8);
-    			append(a2, t23);
-    			append(a2, span9);
-    			append(div11, t25);
-    			append(div11, div8);
-    			append(div8, button2);
-    			append(div11, t26);
-    			append(div11, div10);
+    			append(a2, t19);
+    			append(a2, span6);
+    			append(a2, t20);
+    			append(a2, span7);
+    			append(div10, t22);
+    			append(div10, div7);
+    			append(div7, button1);
+    			append(div10, t23);
     			append(div10, div9);
-    			append(div9, p0);
+    			append(div9, div8);
+    			append(div8, p0);
     			append(p0, input3);
-    			set_input_value(input3, /*text_search*/ ctx[6]);
-    			append(div9, t27);
-    			append(div9, p1);
-    			append(p1, button3);
-    			insert(target, t28, anchor);
+    			set_input_value(input3, /*text_search*/ ctx[7]);
+    			append(div8, t24);
+    			append(div8, p1);
+    			append(p1, button2);
+    			insert(target, t25, anchor);
     			if_blocks[current_block_type_index].m(target, anchor);
-    			insert(target, t29, anchor);
-    			insert(target, div15, anchor);
-    			append(div15, div12);
-    			append(div15, t30);
-    			append(div15, div14);
-    			append(div14, header);
+    			insert(target, t26, anchor);
+    			insert(target, div14, anchor);
+    			append(div14, div11);
+    			append(div14, t27);
+    			append(div14, div13);
+    			append(div13, header);
     			append(header, p2);
-    			append(header, t32);
-    			append(header, button4);
-    			append(div14, t33);
-    			append(div14, section);
-    			append(section, div13);
+    			append(header, t29);
+    			append(header, button3);
+    			append(div13, t30);
+    			append(div13, section);
+    			append(section, div12);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div13, null);
+    				each_blocks[i].m(div12, null);
     			}
 
-    			append(div14, t34);
-    			append(div14, footer);
+    			append(div13, t31);
+    			append(div13, footer);
+    			append(footer, button4);
+    			append(footer, t33);
     			append(footer, button5);
-    			append(footer, t36);
-    			append(footer, button6);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen(button0, "click", /*ChangeIntervalRefresh*/ ctx[19]),
     					listen(input0, "change", /*change_handler*/ ctx[39]),
     					listen(input1, "change", /*change_handler_1*/ ctx[40]),
     					listen(input2, "change", /*change_handler_2*/ ctx[41]),
-    					listen(button2, "click", /*handleExportSelection*/ ctx[26]),
+    					listen(button1, "click", /*handleExportSelection*/ ctx[27]),
     					listen(input3, "input", /*input3_input_handler*/ ctx[42]),
-    					listen(button3, "click", /*handleClickSearch*/ ctx[24]),
-    					listen(button4, "click", /*click_handler_9*/ ctx[54]),
-    					listen(button6, "click", /*click_handler_10*/ ctx[55])
+    					listen(button2, "click", /*handleClickSearch*/ ctx[25]),
+    					listen(button3, "click", /*click_handler_9*/ ctx[54]),
+    					listen(button5, "click", /*click_handler_10*/ ctx[55])
     				];
 
     				mounted = true;
@@ -2906,30 +2945,31 @@
     				}
     			}
 
-    			if (current_block_type !== (current_block_type = select_block_type(ctx))) {
-    				if_block0.d(1);
-    				if_block0 = current_block_type(ctx);
-
+    			if (/*url*/ ctx[3]) {
     				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+    				} else {
+    					if_block0 = create_if_block_24(ctx);
     					if_block0.c();
-    					if_block0.m(span1, null);
+    					if_block0.m(div10, t1);
     				}
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
     			}
 
-    			if ((!current || dirty[0] & /*IntervalRefreshSelected*/ 2) && t2_value !== (t2_value = /*IntervalRefresh*/ ctx[17][/*IntervalRefreshSelected*/ ctx[1]] + "")) set_data(t2, t2_value);
-
-    			if (/*$$slots*/ ctx[31].item1) {
+    			if (/*$$slots*/ ctx[32].item1) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty[1] & /*$$slots*/ 1) {
+    					if (dirty[1] & /*$$slots*/ 2) {
     						transition_in(if_block1, 1);
     					}
     				} else {
     					if_block1 = create_if_block_23(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
-    					if_block1.m(div11, t5);
+    					if_block1.m(div10, t2);
     				}
     			} else if (if_block1) {
     				group_outros();
@@ -2941,18 +2981,18 @@
     				check_outros();
     			}
 
-    			if (/*$$slots*/ ctx[31].item2) {
+    			if (/*$$slots*/ ctx[32].item2) {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
 
-    					if (dirty[1] & /*$$slots*/ 1) {
+    					if (dirty[1] & /*$$slots*/ 2) {
     						transition_in(if_block2, 1);
     					}
     				} else {
     					if_block2 = create_if_block_22(ctx);
     					if_block2.c();
     					transition_in(if_block2, 1);
-    					if_block2.m(div11, t6);
+    					if_block2.m(div10, t3);
     				}
     			} else if (if_block2) {
     				group_outros();
@@ -2964,18 +3004,18 @@
     				check_outros();
     			}
 
-    			if (/*$$slots*/ ctx[31].item3) {
+    			if (/*$$slots*/ ctx[32].item3) {
     				if (if_block3) {
     					if_block3.p(ctx, dirty);
 
-    					if (dirty[1] & /*$$slots*/ 1) {
+    					if (dirty[1] & /*$$slots*/ 2) {
     						transition_in(if_block3, 1);
     					}
     				} else {
     					if_block3 = create_if_block_21(ctx);
     					if_block3.c();
     					transition_in(if_block3, 1);
-    					if_block3.m(div11, t7);
+    					if_block3.m(div10, t4);
     				}
     			} else if (if_block3) {
     				group_outros();
@@ -2987,18 +3027,18 @@
     				check_outros();
     			}
 
-    			if (/*$$slots*/ ctx[31].item4) {
+    			if (/*$$slots*/ ctx[32].item4) {
     				if (if_block4) {
     					if_block4.p(ctx, dirty);
 
-    					if (dirty[1] & /*$$slots*/ 1) {
+    					if (dirty[1] & /*$$slots*/ 2) {
     						transition_in(if_block4, 1);
     					}
     				} else {
     					if_block4 = create_if_block_20(ctx);
     					if_block4.c();
     					transition_in(if_block4, 1);
-    					if_block4.m(div11, t8);
+    					if_block4.m(div10, t5);
     				}
     			} else if (if_block4) {
     				group_outros();
@@ -3010,18 +3050,18 @@
     				check_outros();
     			}
 
-    			if (/*$$slots*/ ctx[31].item5) {
+    			if (/*$$slots*/ ctx[32].item5) {
     				if (if_block5) {
     					if_block5.p(ctx, dirty);
 
-    					if (dirty[1] & /*$$slots*/ 1) {
+    					if (dirty[1] & /*$$slots*/ 2) {
     						transition_in(if_block5, 1);
     					}
     				} else {
     					if_block5 = create_if_block_19(ctx);
     					if_block5.c();
     					transition_in(if_block5, 1);
-    					if_block5.m(div11, t9);
+    					if_block5.m(div10, t6);
     				}
     			} else if (if_block5) {
     				group_outros();
@@ -3033,34 +3073,34 @@
     				check_outros();
     			}
 
-    			if (/*ShowNewButton*/ ctx[3]) {
+    			if (/*ShowNewButton*/ ctx[4]) {
     				if (if_block6) {
     					if_block6.p(ctx, dirty);
     				} else {
     					if_block6 = create_if_block_18(ctx);
     					if_block6.c();
-    					if_block6.m(div11, t10);
+    					if_block6.m(div10, t7);
     				}
     			} else if (if_block6) {
     				if_block6.d(1);
     				if_block6 = null;
     			}
 
-    			if (/*ShowEditButton*/ ctx[4]) {
+    			if (/*ShowEditButton*/ ctx[5]) {
     				if (if_block7) {
     					if_block7.p(ctx, dirty);
     				} else {
     					if_block7 = create_if_block_17(ctx);
     					if_block7.c();
-    					if_block7.m(div11, t11);
+    					if_block7.m(div10, t8);
     				}
     			} else if (if_block7) {
     				if_block7.d(1);
     				if_block7 = null;
     			}
 
-    			if (dirty[0] & /*text_search*/ 64 && input3.value !== /*text_search*/ ctx[6]) {
-    				set_input_value(input3, /*text_search*/ ctx[6]);
+    			if (dirty[0] & /*text_search*/ 128 && input3.value !== /*text_search*/ ctx[7]) {
+    				set_input_value(input3, /*text_search*/ ctx[7]);
     			}
 
     			let previous_block_index = current_block_type_index;
@@ -3086,7 +3126,7 @@
     				}
 
     				transition_in(if_block8, 1);
-    				if_block8.m(t29.parentNode, t29);
+    				if_block8.m(t26.parentNode, t26);
     			}
 
     			if (dirty[0] & /*columns*/ 4) {
@@ -3101,7 +3141,7 @@
     					} else {
     						each_blocks[i] = create_each_block(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(div13, null);
+    						each_blocks[i].m(div12, null);
     					}
     				}
 
@@ -3112,8 +3152,8 @@
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty[0] & /*ShowDialogColumn*/ 512) {
-    				toggle_class(div15, "is-active", /*ShowDialogColumn*/ ctx[9]);
+    			if (dirty[0] & /*ShowDialogColumn*/ 1024) {
+    				toggle_class(div14, "is-active", /*ShowDialogColumn*/ ctx[10]);
     			}
     		},
     		i(local) {
@@ -3140,7 +3180,7 @@
     		d(detaching) {
     			if (detaching) detach(nav);
     			if (title_slot_or_fallback) title_slot_or_fallback.d(detaching);
-    			if_block0.d();
+    			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
     			if (if_block2) if_block2.d();
     			if (if_block3) if_block3.d();
@@ -3148,10 +3188,10 @@
     			if (if_block5) if_block5.d();
     			if (if_block6) if_block6.d();
     			if (if_block7) if_block7.d();
-    			if (detaching) detach(t28);
+    			if (detaching) detach(t25);
     			if_blocks[current_block_type_index].d(detaching);
-    			if (detaching) detach(t29);
-    			if (detaching) detach(div15);
+    			if (detaching) detach(t26);
+    			if (detaching) detach(div14);
     			destroy_each(each_blocks, detaching);
     			mounted = false;
     			run_all(dispose);
@@ -3252,12 +3292,12 @@
     	function SetColumns() {
     		if (RawDataTable && RawDataTable.length > 0) {
     			let MaxSizeLabel = 15;
-    			$$invalidate(15, internal_columns = {});
+    			$$invalidate(16, internal_columns = {});
 
     			Object.keys(RawDataTable[0]).forEach(item => {
     				if (item === "internal_hash_row") {
     					$$invalidate(
-    						15,
+    						16,
     						internal_columns[item] = {
     							label: item.substring(0, MaxSizeLabel),
     							hidden: true
@@ -3265,15 +3305,15 @@
     						internal_columns
     					);
     				} else if (columns[item]) {
-    					$$invalidate(15, internal_columns[item] = columns[item], internal_columns);
+    					$$invalidate(16, internal_columns[item] = columns[item], internal_columns);
 
     					if (!internal_columns[item].label) {
-    						$$invalidate(15, internal_columns[item].label = item.substring(0, MaxSizeLabel), internal_columns);
+    						$$invalidate(16, internal_columns[item].label = item.substring(0, MaxSizeLabel), internal_columns);
     					}
     				} else {
     					// Tambien limita la longitud del nombre de la columna a 10 caracteres
     					$$invalidate(
-    						15,
+    						16,
     						internal_columns[item] = {
     							label: item.substring(0, MaxSizeLabel),
     							hidden: false
@@ -3441,7 +3481,7 @@
     			TempData = RawDataTable;
     		}
 
-    		$$invalidate(12, totalFilteredRows = TempData.length);
+    		$$invalidate(13, totalFilteredRows = TempData.length);
     		Pagination(TempData);
     	}
 
@@ -3454,23 +3494,23 @@
     			}
     		}
 
-    		$$invalidate(14, paginatedData = ArrayChunk(rows, RowsPerPage));
-    		$$invalidate(13, TotalPages = paginatedData.length);
+    		$$invalidate(15, paginatedData = ArrayChunk(rows, RowsPerPage));
+    		$$invalidate(14, TotalPages = paginatedData.length);
 
     		if (PageSelected > TotalPages) {
-    			$$invalidate(10, PageSelected = 1);
+    			$$invalidate(11, PageSelected = 1);
     		}
 
     		SelectPage();
     	}
 
     	function SelectPage() {
-    		$$invalidate(5, DataTable = paginatedData[PageSelected - 1]);
+    		$$invalidate(6, DataTable = paginatedData[PageSelected - 1]);
     	}
 
     	function HandleOnClickEdit() {
     		console.log(showEdit);
-    		$$invalidate(8, showEdit = !showEdit);
+    		$$invalidate(9, showEdit = !showEdit);
     		return false;
     	}
 
@@ -3498,17 +3538,17 @@
     		} else {
     			if (url && url.length > 0) {
     				try {
-    					$$invalidate(7, loading = true);
+    					$$invalidate(8, loading = true);
     					let res = await FetchData.get(url, params);
 
     					if (res && res.ok) {
     						let data = await res.json();
 
     						if (Array.isArray(data)) {
-    							$$invalidate(32, RawDataTable = data);
+    							$$invalidate(33, RawDataTable = data);
     						} else {
     							console.warn(data);
-    							$$invalidate(32, RawDataTable = []);
+    							$$invalidate(33, RawDataTable = []);
     						}
     					} else {
     						console.error(res);
@@ -3516,7 +3556,7 @@
 
     					let Listinternal_hash_row = {}; // Esta variable se usa unicamente para verificar que no se generen llaves duplicadas
 
-    					$$invalidate(32, RawDataTable = RawDataTable.map(row => {
+    					$$invalidate(33, RawDataTable = RawDataTable.map(row => {
     						let c = crypto.createHash("md5").update(JSON.stringify(row)).digest("base64");
 
     						if (Listinternal_hash_row[c]) {
@@ -3534,10 +3574,10 @@
     					SetColumns();
 
     					FilterData();
-    					$$invalidate(7, loading = false);
+    					$$invalidate(8, loading = false);
     				} catch(error) {
     					console.error(error);
-    					$$invalidate(7, loading = false);
+    					$$invalidate(8, loading = false);
     				}
     			} else {
     				console.warn("Not url asigned");
@@ -3559,17 +3599,17 @@
 
     	function input3_input_handler() {
     		text_search = this.value;
-    		$$invalidate(6, text_search);
+    		$$invalidate(7, text_search);
     	}
 
     	const click_handler = () => {
-    		$$invalidate(10, PageSelected = 1);
+    		$$invalidate(11, PageSelected = 1);
     		SelectPage();
     	};
 
     	const click_handler_1 = () => {
     		if (PageSelected > 1) {
-    			$$invalidate(10, PageSelected = PageSelected - 1);
+    			$$invalidate(11, PageSelected = PageSelected - 1);
     		}
 
     		SelectPage();
@@ -3581,40 +3621,40 @@
     	};
 
     	const click_handler_3 = () => {
-    		$$invalidate(10, PageSelected = PageSelected + 1);
+    		$$invalidate(11, PageSelected = PageSelected + 1);
     		SelectPage();
     	};
 
     	const click_handler_4 = () => {
-    		$$invalidate(10, PageSelected = PageSelected + 2);
+    		$$invalidate(11, PageSelected = PageSelected + 2);
     		SelectPage();
     	};
 
     	const click_handler_5 = () => {
-    		$$invalidate(10, PageSelected = PageSelected + 3);
+    		$$invalidate(11, PageSelected = PageSelected + 3);
     		SelectPage();
     	};
 
     	const click_handler_6 = () => {
-    		$$invalidate(10, PageSelected = PageSelected + 4);
+    		$$invalidate(11, PageSelected = PageSelected + 4);
     		SelectPage();
     	};
 
     	const click_handler_7 = () => {
     		if (PageSelected < TotalPages) {
-    			$$invalidate(10, PageSelected = PageSelected + 1);
+    			$$invalidate(11, PageSelected = PageSelected + 1);
     			SelectPage();
     		}
     	};
 
     	const click_handler_8 = () => {
-    		$$invalidate(10, PageSelected = TotalPages);
+    		$$invalidate(11, PageSelected = TotalPages);
     		SelectPage();
     	};
 
     	function select_change_handler() {
     		RowsPerPage = select_value(this);
-    		$$invalidate(11, RowsPerPage);
+    		$$invalidate(12, RowsPerPage);
     	}
 
     	const change_handler_3 = () => {
@@ -3622,21 +3662,21 @@
     	};
 
     	const click_handler_9 = e => {
-    		$$invalidate(9, ShowDialogColumn = false);
+    		$$invalidate(10, ShowDialogColumn = false);
     	};
 
     	const click_handler_10 = e => {
-    		$$invalidate(9, ShowDialogColumn = false);
+    		$$invalidate(10, ShowDialogColumn = false);
     	};
 
     	$$self.$$set = $$props => {
-    		if ('RawDataTable' in $$props) $$invalidate(32, RawDataTable = $$props.RawDataTable);
+    		if ('RawDataTable' in $$props) $$invalidate(33, RawDataTable = $$props.RawDataTable);
     		if ('SelectionType' in $$props) $$invalidate(0, SelectionType = $$props.SelectionType);
     		if ('columns' in $$props) $$invalidate(2, columns = $$props.columns);
-    		if ('url' in $$props) $$invalidate(33, url = $$props.url);
+    		if ('url' in $$props) $$invalidate(3, url = $$props.url);
     		if ('params' in $$props) $$invalidate(34, params = $$props.params);
-    		if ('ShowNewButton' in $$props) $$invalidate(3, ShowNewButton = $$props.ShowNewButton);
-    		if ('ShowEditButton' in $$props) $$invalidate(4, ShowEditButton = $$props.ShowEditButton);
+    		if ('ShowNewButton' in $$props) $$invalidate(4, ShowNewButton = $$props.ShowNewButton);
+    		if ('ShowEditButton' in $$props) $$invalidate(5, ShowEditButton = $$props.ShowEditButton);
     		if ('IntervalRefreshSelected' in $$props) $$invalidate(1, IntervalRefreshSelected = $$props.IntervalRefreshSelected);
     		if ('$$scope' in $$props) $$invalidate(37, $$scope = $$props.$$scope);
     	};
@@ -3655,6 +3695,7 @@
     		SelectionType,
     		IntervalRefreshSelected,
     		columns,
+    		url,
     		ShowNewButton,
     		ShowEditButton,
     		DataTable,
@@ -3685,7 +3726,6 @@
     		HandleOnRowSelected,
     		$$slots,
     		RawDataTable,
-    		url,
     		params,
     		GetSelectedRows,
     		SelectedRows,
@@ -3722,13 +3762,13 @@
     			create_fragment,
     			safe_not_equal,
     			{
-    				RawDataTable: 32,
+    				RawDataTable: 33,
     				SelectionType: 0,
     				columns: 2,
-    				url: 33,
+    				url: 3,
     				params: 34,
-    				ShowNewButton: 3,
-    				ShowEditButton: 4,
+    				ShowNewButton: 4,
+    				ShowEditButton: 5,
     				IntervalRefreshSelected: 1,
     				GetSelectedRows: 35
     			},

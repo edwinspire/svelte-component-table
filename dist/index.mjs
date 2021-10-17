@@ -944,7 +944,7 @@ function create_if_block_17(ctx) {
 	};
 }
 
-// (801:0) {:else}
+// (802:0) {:else}
 function create_else_block_1(ctx) {
 	let div;
 
@@ -1705,7 +1705,7 @@ function create_if_block_7(ctx) {
 	};
 }
 
-// (647:18) {:else}
+// (648:18) {:else}
 function create_else_block(ctx) {
 	let switch_instance;
 	let switch_instance_anchor;
@@ -2104,7 +2104,7 @@ function create_each_block_1(key_1, ctx) {
 	};
 }
 
-// (668:8) {#if paginatedData && paginatedData.length > 1}
+// (669:8) {#if paginatedData && paginatedData.length > 1}
 function create_if_block_1(ctx) {
 	let div0;
 	let span0;
@@ -2301,7 +2301,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (708:14) {#if PageSelected + 1 <= TotalPages}
+// (709:14) {#if PageSelected + 1 <= TotalPages}
 function create_if_block_5(ctx) {
 	let button;
 	let t_value = /*PageSelected*/ ctx[10] + 1 + "";
@@ -2335,7 +2335,7 @@ function create_if_block_5(ctx) {
 	};
 }
 
-// (717:14) {#if PageSelected + 2 <= TotalPages}
+// (718:14) {#if PageSelected + 2 <= TotalPages}
 function create_if_block_4(ctx) {
 	let button;
 	let t_value = /*PageSelected*/ ctx[10] + 2 + "";
@@ -2369,7 +2369,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (727:14) {#if PageSelected + 3 <= TotalPages}
+// (728:14) {#if PageSelected + 3 <= TotalPages}
 function create_if_block_3(ctx) {
 	let button;
 	let t_value = /*PageSelected*/ ctx[10] + 3 + "";
@@ -2403,7 +2403,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (737:14) {#if PageSelected + 4 <= TotalPages}
+// (738:14) {#if PageSelected + 4 <= TotalPages}
 function create_if_block_2(ctx) {
 	let button;
 	let t_value = /*PageSelected*/ ctx[10] + 4 + "";
@@ -2437,7 +2437,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (827:8) {#each Object.keys(columns) as col}
+// (828:8) {#each Object.keys(columns) as col}
 function create_each_block(ctx) {
 	let div;
 	let label;

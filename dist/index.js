@@ -1651,7 +1651,7 @@
     	const if_blocks = [];
 
     	function select_block_type_2(ctx, dirty) {
-    		if (/*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator) return 0;
+    		if (/*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator && /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.component) return 0;
     		return 1;
     	}
 
@@ -1799,16 +1799,17 @@
     	};
     }
 
-    // (640:18) {#if internal_columns[item].decorator}
+    // (640:18) {#if internal_columns[item].decorator && internal_columns[item].decorator.component}
     function create_if_block_8(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
     	let current;
-    	var switch_value = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator;
+    	var switch_value = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.component;
 
     	function switch_props(ctx) {
     		return {
     			props: {
+    				props: /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.props,
     				row: /*dataRow*/ ctx[75],
     				value: /*dataRow*/ ctx[75][/*item*/ ctx[78]]
     			}
@@ -1839,10 +1840,11 @@
     		p(new_ctx, dirty) {
     			ctx = new_ctx;
     			const switch_instance_changes = {};
+    			if (dirty[0] & /*internal_columns, DataTable*/ 32800) switch_instance_changes.props = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.props;
     			if (dirty[0] & /*DataTable*/ 32) switch_instance_changes.row = /*dataRow*/ ctx[75];
     			if (dirty[0] & /*DataTable*/ 32) switch_instance_changes.value = /*dataRow*/ ctx[75][/*item*/ ctx[78]];
 
-    			if (switch_value !== (switch_value = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator)) {
+    			if (switch_value !== (switch_value = /*internal_columns*/ ctx[15][/*item*/ ctx[78]].decorator.component)) {
     				if (switch_instance) {
     					group_outros();
     					const old_component = switch_instance;

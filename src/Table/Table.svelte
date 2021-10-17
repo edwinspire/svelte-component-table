@@ -637,9 +637,9 @@
               <!-- Muestra las columnas que no se hayan especificado como ocultas -->
               {#if internal_columns[item]}
                 {#if !internal_columns[item].hidden || internal_columns[item].hidden == null}
-                  {#if internal_columns[item].decorator}
+                  {#if internal_columns[item].decorator && internal_columns[item].decorator.component}
                     <svelte:component
-                      this={internal_columns[item].decorator}
+                      this={internal_columns[item].decorator.component} props = {internal_columns[item].decorator.props}
                       on:click={HClickCell(item, dataRow)}
                       row={dataRow}
                       value={dataRow[item]}

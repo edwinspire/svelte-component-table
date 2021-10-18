@@ -559,7 +559,7 @@
     const get_title_slot_changes = dirty => ({});
     const get_title_slot_context = ctx => ({});
 
-    // (392:52) .
+    // (396:52) .
     function fallback_block(ctx) {
     	let t;
 
@@ -576,7 +576,7 @@
     	};
     }
 
-    // (398:4) {#if url}
+    // (402:4) {#if url}
     function create_if_block_24(ctx) {
     	let div;
     	let button;
@@ -649,7 +649,7 @@
     	};
     }
 
-    // (404:12) {:else}
+    // (408:12) {:else}
     function create_else_block_2(ctx) {
     	let i;
 
@@ -667,7 +667,7 @@
     	};
     }
 
-    // (402:12) {#if loading}
+    // (406:12) {#if loading}
     function create_if_block_25(ctx) {
     	let i;
 
@@ -685,7 +685,7 @@
     	};
     }
 
-    // (413:4) {#if $$slots.item1}
+    // (417:4) {#if $$slots.item1}
     function create_if_block_23(ctx) {
     	let div;
     	let current;
@@ -739,7 +739,7 @@
     	};
     }
 
-    // (418:4) {#if $$slots.item2}
+    // (422:4) {#if $$slots.item2}
     function create_if_block_22(ctx) {
     	let div;
     	let current;
@@ -793,7 +793,7 @@
     	};
     }
 
-    // (423:4) {#if $$slots.item3}
+    // (427:4) {#if $$slots.item3}
     function create_if_block_21(ctx) {
     	let div;
     	let current;
@@ -847,7 +847,7 @@
     	};
     }
 
-    // (428:4) {#if $$slots.item4}
+    // (432:4) {#if $$slots.item4}
     function create_if_block_20(ctx) {
     	let div;
     	let current;
@@ -901,7 +901,7 @@
     	};
     }
 
-    // (433:4) {#if $$slots.item5}
+    // (437:4) {#if $$slots.item5}
     function create_if_block_19(ctx) {
     	let div;
     	let current;
@@ -955,7 +955,7 @@
     	};
     }
 
-    // (439:4) {#if ShowNewButton}
+    // (443:4) {#if ShowNewButton}
     function create_if_block_18(ctx) {
     	let div;
     	let button;
@@ -989,7 +989,7 @@
     	};
     }
 
-    // (449:4) {#if ShowEditButton}
+    // (453:4) {#if ShowEditButton}
     function create_if_block_17(ctx) {
     	let div;
     	let button;
@@ -1023,7 +1023,7 @@
     	};
     }
 
-    // (807:0) {:else}
+    // (811:0) {:else}
     function create_else_block_1(ctx) {
     	let div;
 
@@ -1048,7 +1048,7 @@
     	};
     }
 
-    // (559:0) {#if DataTable && DataTable.length > 0}
+    // (563:0) {#if DataTable && DataTable.length > 0}
     function create_if_block(ctx) {
     	let div0;
     	let table;
@@ -1350,7 +1350,7 @@
     	};
     }
 
-    // (568:10) {#if SelectionType == 1}
+    // (572:10) {#if SelectionType == 1}
     function create_if_block_16(ctx) {
     	let th;
 
@@ -1369,7 +1369,7 @@
     	};
     }
 
-    // (572:10) {#if SelectionType == 2}
+    // (576:10) {#if SelectionType == 2}
     function create_if_block_15(ctx) {
     	let th;
     	let input;
@@ -1401,7 +1401,7 @@
     	};
     }
 
-    // (578:10) {#if showEdit}
+    // (582:10) {#if showEdit}
     function create_if_block_14(ctx) {
     	let th;
 
@@ -1420,7 +1420,7 @@
     	};
     }
 
-    // (586:12) {#if internal_columns[item]}
+    // (590:12) {#if internal_columns[item]}
     function create_if_block_12(ctx) {
     	let if_block_anchor;
     	let if_block = (!/*internal_columns*/ ctx[16][/*item*/ ctx[79]].hidden || !/*internal_columns*/ ctx[16][/*item*/ ctx[79]].hidden == null) && create_if_block_13(ctx);
@@ -1455,7 +1455,7 @@
     	};
     }
 
-    // (587:14) {#if !internal_columns[item].hidden || !internal_columns[item].hidden == null}
+    // (591:14) {#if !internal_columns[item].hidden || !internal_columns[item].hidden == null}
     function create_if_block_13(ctx) {
     	let th;
     	let t0_value = /*internal_columns*/ ctx[16][/*item*/ ctx[79]].label + "";
@@ -1498,7 +1498,7 @@
     	};
     }
 
-    // (584:10) {#each Object.keys(DataTable[0]) as item, ith}
+    // (588:10) {#each Object.keys(DataTable[0]) as item, ith}
     function create_each_block_3(ctx) {
     	let if_block_anchor;
     	let if_block = /*internal_columns*/ ctx[16][/*item*/ ctx[79]] && create_if_block_12(ctx);
@@ -1533,7 +1533,7 @@
     	};
     }
 
-    // (605:12) {#if SelectionType == 1}
+    // (609:12) {#if SelectionType == 1}
     function create_if_block_11(ctx) {
     	let td;
     	let input;
@@ -1579,7 +1579,7 @@
     	};
     }
 
-    // (618:12) {#if SelectionType == 2}
+    // (622:12) {#if SelectionType == 2}
     function create_if_block_10(ctx) {
     	let td;
     	let input;
@@ -1624,7 +1624,7 @@
     	};
     }
 
-    // (630:12) {#if showEdit}
+    // (634:12) {#if showEdit}
     function create_if_block_9(ctx) {
     	let td;
     	let mounted;
@@ -1658,7 +1658,7 @@
     	};
     }
 
-    // (642:14) {#if internal_columns[item]}
+    // (646:14) {#if internal_columns[item]}
     function create_if_block_6(ctx) {
     	let if_block_anchor;
     	let current;
@@ -1714,7 +1714,7 @@
     	};
     }
 
-    // (643:16) {#if !internal_columns[item].hidden || internal_columns[item].hidden == null}
+    // (647:16) {#if !internal_columns[item].hidden || internal_columns[item].hidden == null}
     function create_if_block_7(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -1784,7 +1784,7 @@
     	};
     }
 
-    // (652:18) {:else}
+    // (656:18) {:else}
     function create_else_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -1873,7 +1873,7 @@
     	};
     }
 
-    // (644:18) {#if internal_columns[item].decorator && internal_columns[item].decorator.component}
+    // (648:18) {#if internal_columns[item].decorator && internal_columns[item].decorator.component}
     function create_if_block_8(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -1963,7 +1963,7 @@
     	};
     }
 
-    // (640:12) {#each Object.keys(dataRow) as item, itd}
+    // (644:12) {#each Object.keys(dataRow) as item, itd}
     function create_each_block_2(ctx) {
     	let if_block_anchor;
     	let current;
@@ -2019,7 +2019,7 @@
     	};
     }
 
-    // (602:8) {#each DataTable as dataRow, i (dataRow.internal_hash_row)}
+    // (606:8) {#each DataTable as dataRow, i (dataRow.internal_hash_row)}
     function create_each_block_1(key_1, ctx) {
     	let tr;
     	let td;
@@ -2184,7 +2184,7 @@
     	};
     }
 
-    // (674:8) {#if paginatedData && paginatedData.length > 1}
+    // (678:8) {#if paginatedData && paginatedData.length > 1}
     function create_if_block_1(ctx) {
     	let div0;
     	let span0;
@@ -2381,7 +2381,7 @@
     	};
     }
 
-    // (714:14) {#if PageSelected + 1 <= TotalPages}
+    // (718:14) {#if PageSelected + 1 <= TotalPages}
     function create_if_block_5(ctx) {
     	let button;
     	let t_value = /*PageSelected*/ ctx[11] + 1 + "";
@@ -2415,7 +2415,7 @@
     	};
     }
 
-    // (723:14) {#if PageSelected + 2 <= TotalPages}
+    // (727:14) {#if PageSelected + 2 <= TotalPages}
     function create_if_block_4(ctx) {
     	let button;
     	let t_value = /*PageSelected*/ ctx[11] + 2 + "";
@@ -2449,7 +2449,7 @@
     	};
     }
 
-    // (733:14) {#if PageSelected + 3 <= TotalPages}
+    // (737:14) {#if PageSelected + 3 <= TotalPages}
     function create_if_block_3(ctx) {
     	let button;
     	let t_value = /*PageSelected*/ ctx[11] + 3 + "";
@@ -2483,7 +2483,7 @@
     	};
     }
 
-    // (743:14) {#if PageSelected + 4 <= TotalPages}
+    // (747:14) {#if PageSelected + 4 <= TotalPages}
     function create_if_block_2(ctx) {
     	let button;
     	let t_value = /*PageSelected*/ ctx[11] + 4 + "";
@@ -2517,7 +2517,7 @@
     	};
     }
 
-    // (833:8) {#each Object.keys(columns) as col}
+    // (837:8) {#each Object.keys(columns) as col}
     function create_each_block(ctx) {
     	let div;
     	let label;
@@ -3428,12 +3428,17 @@
     		if (text_search && text_search.length > 0) {
     			FilterData();
     		} else {
-    			GetDataTable();
+    			setTimeout(
+    				async () => {
+    					await GetDataTable();
+    					FilterData();
+    				},
+    				250
+    			);
     		}
     	}
 
-    	GetDataTable();
-
+    	//GetDataTable();
     	function handleChangeSelectAll(e) {
     		SelectAll = e.target.checked;
 

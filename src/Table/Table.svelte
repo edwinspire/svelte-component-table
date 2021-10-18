@@ -14,6 +14,7 @@
   //TODO Fijar encabezado
   //TODO Hacer celdas editables
   //TODO Hacer columnas con ancho ajustable
+  //TODO Cuando se presiona exportar se coloca como selección multiple, sin embargo no cambia en el menú de tipo de  selección
   //export let CellTypes = {};
   export let RawDataTable = [];
   export let SelectionType = 0;
@@ -215,11 +216,14 @@
     if (text_search && text_search.length > 0) {
       FilterData();
     } else {
-      GetDataTable();
+      setTimeout(async () => {
+        await GetDataTable();
+        FilterData();
+      }, 250);
     }
   }
 
-  GetDataTable();
+  //GetDataTable();
 
   function handleChangeSelectAll(e) {
     SelectAll = e.target.checked;

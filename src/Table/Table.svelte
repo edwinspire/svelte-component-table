@@ -54,6 +54,7 @@
   //console.log('CellTypes:', CustomCellTypes);
 
   $: SelectedRows, OnSelection();
+  $: RawDataTable, ProcessRawData();
 
   function OnSelection() {
     dispatch("selectrows", { rows: GetSelectedRows() });
@@ -321,6 +322,34 @@
     OnSelection();
   }
 
+  function ProcessRawData() {
+    console.log("ProcessRawData");
+    let Listinternal_hash_row = {}; // Esta variable se usa unicamente para verificar que no se generen llaves duplicadas
+    RawDataTable = RawDataTable.map((row) => {
+      let c = crypto
+        .createHash("md5")
+        .update(JSON.stringify(row))
+        .digest("base64");
+
+      if (Listinternal_hash_row[c]) {
+        console.error("Hay un registro duplicado en la tabla", row);
+        c =
+          c +
+          "-" +
+          new Date().getTime() +
+          "-" +
+          Math.floor(Math.random() * 10000);
+        Listinternal_hash_row[c] = true;
+      } else {
+        Listinternal_hash_row[c] = true;
+      }
+      return { ...row, internal_hash_row: c };
+    });
+
+    SetColumns();
+    FilterData();
+  }
+
   async function GetDataTable() {
     if (loading) {
       console.log("Hay una petición en curso");
@@ -342,33 +371,7 @@
           } else {
             console.error(res);
           }
-
-          let Listinternal_hash_row = {}; // Esta variable se usa unicamente para verificar que no se generen llaves duplicadas
-          RawDataTable = RawDataTable.map((row) => {
-            let c = crypto
-              .createHash("md5")
-              .update(JSON.stringify(row))
-              .digest("base64");
-
-            if (Listinternal_hash_row[c]) {
-              console.error("Hay un registro duplicado en la tabla", row);
-              c =
-                c +
-                "-" +
-                new Date().getTime() +
-                "-" +
-                Math.floor(Math.random() * 10000);
-              Listinternal_hash_row[c] = true;
-            } else {
-              Listinternal_hash_row[c] = true;
-            }
-            return { ...row, internal_hash_row: c };
-          });
-
-          //console.log(RawDataTable);
-
-          SetColumns();
-          FilterData();
+          //ProcessRawData();
           loading = false;
         } catch (error) {
           console.error(error);

@@ -285,7 +285,7 @@
         rows = rows.sort(SortColumn(ColumnSort, "desc"));
       }
     }
-
+console.log(PageSize, PageSizeSelected);
     paginatedData = ArrayChunk(rows, PageSize[PageSizeSelected]);
     TotalPages = paginatedData.length;
     if (PageSelected > TotalPages) {
@@ -800,7 +800,7 @@
             >
               {#each PageSize as item, itd}
                 <option
-                  value={item}
+                  value={itd}
                   selected={item == PageSize[PageSizeSelected]}>{item}</option
                 >
               {/each}

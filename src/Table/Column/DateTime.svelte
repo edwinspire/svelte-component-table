@@ -20,10 +20,15 @@
   function fn_DC01() {
     DC001 =
       HighlightIsntToday &&
+      DateTime.fromISO(value).toFormat("yyyy-MM-dd") !==
+        DateTime.local().toFormat("yyyy-MM-dd");
+    /*
+      HighlightIsntToday &&
       !(
         new Date(value).getFullYear() === new Date().getFullYear() &&
         new Date(value).getDate() === new Date().getDate()
       );
+      */
   }
   $: value, fn_DC01();
 </script>

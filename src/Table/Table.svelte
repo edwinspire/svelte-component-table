@@ -33,6 +33,7 @@
   let ColumnSort;
   let ShowDialogColumn = false;
 
+  let LastFetchResponse = true;
   // -- Refresh -- //
   let IntervalRefresh = [10, 20, 30, 45, 60, 120, 240, 480, 960, 1920, 3840];
   export let IntervalRefreshSelected = 2;
@@ -158,7 +159,7 @@
   }, IntervalRefresh[IntervalRefreshSelected] * 1000);
 
   onDestroy(() => {
-    console.log("Mata refresh");
+    //console.log("Mata refresh");
     clearInterval(auto_refresh);
   });
 
@@ -285,7 +286,7 @@
         rows = rows.sort(SortColumn(ColumnSort, "desc"));
       }
     }
-console.log(PageSize, PageSizeSelected);
+    //console.log(PageSize, PageSizeSelected);
     paginatedData = ArrayChunk(rows, PageSize[PageSizeSelected]);
     TotalPages = paginatedData.length;
     if (PageSelected > TotalPages) {
@@ -299,16 +300,18 @@ console.log(PageSize, PageSizeSelected);
   }
 
   function HandleOnClickEdit() {
-    console.log(showEdit);
+    //console.log(showEdit);
     showEdit = !showEdit;
     return false;
   }
 
+  /*
   function HandleOnClickSelection() {
-    console.log(showSelection);
+    //console.log(showSelection);
     showSelection = !showSelection;
     return false;
   }
+  */
 
   function HandleOnRowSelected(event) {
     if (SelectionType == 1) {
@@ -327,7 +330,7 @@ console.log(PageSize, PageSizeSelected);
   }
 
   function ProcessRawData() {
-    console.log("ProcessRawData");
+    //console.log("ProcessRawData");
     let Listinternal_hash_row = {}; // Esta variable se usa unicamente para verificar que no se generen llaves duplicadas
     RawDataTable = RawDataTable.map((row) => {
       let c = crypto
@@ -368,21 +371,26 @@ console.log(PageSize, PageSizeSelected);
 
             if (Array.isArray(data)) {
               RawDataTable = data;
+              LastFetchResponse = true;
             } else {
               console.warn(data);
               RawDataTable = [];
+              LastFetchResponse = false;
             }
           } else {
             console.error(res);
+            LastFetchResponse = false;
           }
           //ProcessRawData();
           loading = false;
         } catch (error) {
           console.error(error);
           loading = false;
+          LastFetchResponse = false;
         }
       } else {
         console.warn("Not url asigned");
+        LastFetchResponse = false;
       }
     }
   }
@@ -402,13 +410,17 @@ console.log(PageSize, PageSizeSelected);
     {#if url}
       <div class="level-item" title="Intervalo de refresco">
         <button class="button is-small" on:click={ChangeIntervalRefresh}>
-          <span class="icon">
-            {#if loading}
-              <i class="fas fa-spinner fa-pulse" />
-            {:else}
-              <i class="fas fa-hourglass-half" />
-            {/if}
-          </span>
+          {#if loading}
+            <span class="icon has-text-info"
+              ><i class="fas fa-spinner fa-pulse" /></span
+            >
+          {:else if LastFetchResponse}
+            <span class="icon"><i class="fas fa-hourglass-half" /></span>
+          {:else}
+            <span class="icon has-text-danger"
+              ><i class="fas fa-exclamation-triangle" /></span
+            >
+          {/if}
           <span>{IntervalRefresh[IntervalRefreshSelected]}s</span>
         </button>
       </div>
@@ -793,7 +805,7 @@ console.log(PageSize, PageSizeSelected);
             <select
               name="rows_per_page"
               on:change={(e) => {
-                console.log(e.target.value);
+                //console.log(e.target.value);
                 PageSizeSelected = e.target.value;
                 FilterData();
               }}

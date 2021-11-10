@@ -38,10 +38,9 @@
   export let IntervalRefreshSelected = 2;
   //-- Pagination --//
   let PageSize = [25, 50, 100, 200, 300, 500, 1000];
-  let PageSizeSelected = 1;
+  export let PageSizeSelected = 0;
 
   let PageSelected = 1;
-  //let RowsPerPage = 25;
   let totalFilteredRows = 0;
   let TotalPages = 0;
   let paginatedData = [];

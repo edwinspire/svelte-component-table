@@ -5,8 +5,6 @@
   import { onDestroy, onMount } from "svelte";
   const uFetch = require("@edwinspire/universal-fetch");
   const Json = require("./Column/DefaultTypes.js").Json;
-  //import BaseCellTypes from "./Cell/TableCell.js";
-  //import BuildCellTypes from "./Cell/Cell.js";
 
   //-      -//
   //TODO Habilitar mostrar u ocultar columnas
@@ -15,7 +13,7 @@
   //TODO Hacer celdas editables
   //TODO Hacer columnas con ancho ajustable
   //TODO Cuando se presiona exportar se coloca como selección multiple, sin embargo no cambia en el menú de tipo de  selección
-  //export let CellTypes = {};
+
   export let RawDataTable = [];
   export let SelectionType = 0;
   export let columns = {};
@@ -39,8 +37,11 @@
   let IntervalRefresh = [10, 20, 30, 45, 60, 120, 240, 480, 960, 1920, 3840];
   export let IntervalRefreshSelected = 2;
   //-- Pagination --//
+  let PageSize = [25, 50, 100, 200, 300, 500, 1000];
+  let PageSizeSelected = 1;
+
   let PageSelected = 1;
-  let RowsPerPage = 20;
+  //let RowsPerPage = 25;
   let totalFilteredRows = 0;
   let TotalPages = 0;
   let paginatedData = [];
@@ -286,7 +287,7 @@
       }
     }
 
-    paginatedData = ArrayChunk(rows, RowsPerPage);
+    paginatedData = ArrayChunk(rows, PageSize[PageSizeSelected]);
     TotalPages = paginatedData.length;
     if (PageSelected > TotalPages) {
       PageSelected = 1;
@@ -605,7 +606,7 @@
       <tbody>
         {#each DataTable as dataRow, i (dataRow.internal_hash_row)}
           <tr>
-            <td>{i + 1 + RowsPerPage * (PageSelected - 1)}</td>
+            <td>{i + 1 + PageSize[PageSizeSelected] * (PageSelected - 1)}</td>
             {#if SelectionType == 1}
               <td class="has-text-centered"
                 ><input
@@ -792,16 +793,18 @@
             <!-- svelte-ignore a11y-no-onchange -->
             <select
               name="rows_per_page"
-              bind:value={RowsPerPage}
-              on:change={() => {
+
+              on:change={(e) => {
+console.log(e.target.value);
+PageSizeSelected = e.target.value;
                 FilterData();
               }}
             >
-              <option value="20" selected>20</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-              <option value="200">200</option>
-              <option value="300">300</option>
+
+              {#each PageSize as item, itd}
+                <option value={item} selected={item == PageSize[PageSizeSelected]}>{item}</option>
+              {/each}
+
             </select>
           </div>
         </span>

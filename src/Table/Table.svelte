@@ -210,6 +210,7 @@
   function HClickHeader(e) {
     ColumnSort = e.target.dataset.column;
     orderASC = !orderASC;
+    console.log("ColumnSort:", ColumnSort, "orderASC:", orderASC);
     FilterData();
   }
 
@@ -608,6 +609,9 @@
                   on:click={HClickHeader}
                 >
                   {internal_columns[item].label}
+                  {#if ColumnSort == item}
+                    <i class="fas fa-sort" />
+                  {/if}
                 </th>
               {/if}
             {/if}

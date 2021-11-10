@@ -792,18 +792,18 @@
             <!-- svelte-ignore a11y-no-onchange -->
             <select
               name="rows_per_page"
-
               on:change={(e) => {
-console.log(e.target.value);
-PageSizeSelected = e.target.value;
+                console.log(e.target.value);
+                PageSizeSelected = e.target.value;
                 FilterData();
               }}
             >
-
               {#each PageSize as item, itd}
-                <option value={item} selected={item == PageSize[PageSizeSelected]}>{item}</option>
+                <option
+                  value={item}
+                  selected={item == PageSize[PageSizeSelected]}>{item}</option
+                >
               {/each}
-
             </select>
           </div>
         </span>

@@ -611,9 +611,9 @@
                   {internal_columns[item].label}
                   {#if ColumnSort == item}
                     {#if orderASC}
-                      <i class="fas fa-caret-up" />
-                    {:else}
                       <i class="fas fa-caret-down" />
+                    {:else}
+                      <i class="fas fa-caret-up" />
                     {/if}
                   {/if}
                 </th>

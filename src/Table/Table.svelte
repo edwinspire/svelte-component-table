@@ -5,6 +5,7 @@
   import { onDestroy, onMount } from "svelte";
   const uFetch = require("@edwinspire/universal-fetch");
   const Json = require("./Column/DefaultTypes.js").Json;
+  const { DateTime } = require("luxon");
 
   //-      -//
   //TODO Habilitar mostrar u ocultar columnas
@@ -144,7 +145,12 @@
         /* Create a new empty workbook, then add the worksheet */
         var wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Report");
-        XLSX.writeFile(wb, "Table_" + Date.now() + ".xlsx");
+        let NameFile =
+          "Report_" +
+          DateTime.local().toFormat("yyyy-MM-dd_HH-mm-ss") +
+          ".xlsx";
+
+        XLSX.writeFile(wb, NameFile);
       } else {
         alert("Debe Seleccionar las filas para exportar");
         SelectionType = 2;

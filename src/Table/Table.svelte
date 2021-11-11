@@ -149,7 +149,7 @@
           "Report_" +
           DateTime.local().toFormat("yyyy-MM-dd_HH-mm-ss") +
           ".xlsx";
-
+console.log(NameFile);
         XLSX.writeFile(wb, NameFile);
       } else {
         alert("Debe Seleccionar las filas para exportar");

@@ -10,7 +10,6 @@
 
   //-      -//
   //TODO Habilitar mostrar u ocultar columnas
-  //TODO Mostrar icono en columna que está siendo ordenada
   //TODO Fijar encabezado
   //TODO Hacer celdas editables
   //TODO Hacer columnas con ancho ajustable
@@ -142,6 +141,7 @@
             //r[key] = JSON.stringify(row[key], null, 4);
             r[key] = JSON.stringify(row[key]);
             let caracteres = r[key].length;
+            //32767 es el limite de caracteres por celda en un xlsx
             if (caracteres >= 32767) {
               ExceedsCharacterLimitPerCell = true;
               console.warn(

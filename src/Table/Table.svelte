@@ -149,8 +149,8 @@
           "Report_" +
           DateTime.local().toFormat("yyyy-MM-dd_HH-mm-ss") +
           ".xlsx";
-console.log(NameFile);
-        XLSX.writeFile(wb, NameFile);
+        var wopts = { bookType: "xlsx", bookSST: false, type: "array" };
+        XLSX.writeFile(wb, NameFile, wopts);
       } else {
         alert("Debe Seleccionar las filas para exportar");
         SelectionType = 2;

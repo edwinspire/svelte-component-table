@@ -5,6 +5,7 @@
   import { onDestroy, onMount } from "svelte";
   const uFetch = require("@edwinspire/universal-fetch");
   const Json = require("./Column/DefaultTypes.js").Json;
+  const DT = require("./Column/DefaultTypes.js").DateTime;
   const { DateTime } = require("luxon");
 
   //-      -//
@@ -121,18 +122,32 @@
   }
 
   function ExportTable() {
+    //console.log(this);
     try {
       // Filter only selection
       let filteredData = GetSelectedRows();
-
+      let ExceedsCharacterLimitPerCell = false;
       let FormatedData = filteredData.map((row) => {
         let r = { ...row };
         // Convert to string objects
         Object.keys(row).forEach((key) => {
-          if (columns[key] && columns[key].type == "Date") {
+          if (
+            columns[key] &&
+            columns[key].decorator &&
+            columns[key].decorator.component &&
+            columns[key].decorator.component === DT
+          ) {
             r[key] = new Date(row[key]).toString();
           } else if (row[key] !== null && typeof row[key] === "object") {
-            r[key] = JSON.stringify(row[key], null, 4);
+            //r[key] = JSON.stringify(row[key], null, 4);
+            r[key] = JSON.stringify(row[key]);
+            let caracteres = r[key].length;
+            if (caracteres >= 32767) {
+              ExceedsCharacterLimitPerCell = true;
+              console.warn(
+                `El valor de la columna ${key} es muy largo para ser exportado, se ha limitado a 32767 caracteres`
+              );
+            }
           }
         });
         delete r.internal_hash_row;
@@ -145,11 +160,22 @@
         /* Create a new empty workbook, then add the worksheet */
         var wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Report");
+        let ExtensionFile = "xlsx";
+        if (ExceedsCharacterLimitPerCell) {
+          ExtensionFile = "csv";
+        }
+
         let NameFile =
           "Report_" +
           DateTime.local().toFormat("yyyy-MM-dd_HH-mm-ss") +
-          ".xlsx";
-        var wopts = { bookType: "xlsx", bookSST: false, type: "array" };
+          "." +
+          ExtensionFile;
+        var wopts = {
+          bookType: ExtensionFile,
+          bookSST: false,
+          type: "binary",
+          FS: ";",
+        };
         XLSX.writeFile(wb, NameFile, wopts);
       } else {
         alert("Debe Seleccionar las filas para exportar");

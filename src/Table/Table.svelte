@@ -136,7 +136,8 @@
             columns[key].decorator.component &&
             columns[key].decorator.component === DT
           ) {
-            r[key] = new Date(row[key]).toString();
+            //r[key] = new Date(row[key]).toISOString();
+            r[key] = DateTime.fromISO(row[key]).toISO();
           } else if (row[key] !== null && typeof row[key] === "object") {
             //r[key] = JSON.stringify(row[key], null, 4);
             r[key] = JSON.stringify(row[key]);

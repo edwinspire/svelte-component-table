@@ -1,12 +1,13 @@
 <script>
   export let value;
   export const row = {};
-  export const props = {};
+  export let props = {};
   let option = "default";
 
   if (props && props.option) {
     option = props.option;
   }
+  //console.log(props);
 </script>
 
 {#if value}

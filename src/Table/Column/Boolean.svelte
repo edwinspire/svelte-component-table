@@ -32,6 +32,8 @@
 
   if (props && props.option) {
     option = config[props.option];
+  }else{
+    option = null;
   }
 //  console.log(option, value);
 </script>
